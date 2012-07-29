@@ -1,0 +1,70 @@
+body {
+	line-height: 1;
+	font-size: 14px;
+	font-family: "Helvetica Neue",Arial,sans-serif;
+	background: url(../../assets/low_contrast_linen.png);
+}
+
+a, a:visited {
+	text-decoration: none;
+	color: #888;
+}
+
+a:hover {
+	color: #B22;
+	text-decoration: underline;
+}
+
+#center {
+	background: white url(../../assets/extra_clean_paper.png) repeat-y 0px 0px;
+	margin: 0px auto;
+	padding: 0px;
+	position: relative;
+	width: 951px;
+	min-height: 732px;
+	text-align: center;
+}
+
+#center-content {
+	background: transparent url(../../assets/extra_clean_paper.png);
+	margin: 0 auto;
+	padding: 0px;
+	padding-top: 20px;
+	position: relative;
+	width: 80%;
+	height: 100%;
+	min-height: 762px;
+	min-width: 953px;
+}
+
+#top-left, #top-center, #top-right {
+	margin-left: 10%;
+	float: left;
+	width: 19%;
+}
+
+#top-left ul, #top-center ul, #top-right ul {
+	list-style: none;
+}
+
+#top-left ul li, #top-center ul li, #top-right ul li {
+	padding: 15px;
+}
+
+img.image-news {
+	margin: 14px;
+	float: left;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	
+	-webkit-box-shadow: 0 3px 10px #888;
+	-moz-box-shadow: 0 3px 10px #888;
+	box-shadow: 0 3px 10px #888;
+}
+
+img.image-news:hover {
+	-webkit-box-shadow: 0 3px 10px #B22;
+	-moz-box-shadow: 0 3px 10px #B22;
+	box-shadow: 0 3px 10px #B22;
+}

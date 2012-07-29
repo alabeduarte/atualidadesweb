@@ -2,13 +2,18 @@
 <html>
 <head>
   <title>Pontodevista</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>  
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+	<div id="center">
+		<div id="center-content">
+			<%= yield %>
+		</div>
+	</div>
+	<%= javascript_include_tag "application" %>
+	<script type="text/javascript">
+		<%= yield :javascript %>
+	</script>
 </body>
 </html>
