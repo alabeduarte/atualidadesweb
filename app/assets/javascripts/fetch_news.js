@@ -15,7 +15,6 @@ function fetchNews() {
 
 function fetchNewsFrom(logo, json, sectionId) {
 	$(sectionId).css('display', 'block');
-	$(sectionId).append($('<img src="' + logo + '" width="80px" height="50px">'));
 	$(sectionId).append($('<ul>'));
 	$.getJSON(json, function(data) {
 		$.each(data, function(index, item){
@@ -30,13 +29,17 @@ function fetchNewsFrom(logo, json, sectionId) {
 			if (!title) {
 				title = subtitle;
 			}
-			var link = $('<a id="' + urlId + '" href="' + url + '" target="_blank">' + title + '</a>');
+			var link = $('<a id="' + urlId + '" href="' + url + '" target="_blank">' + title + '</a>');			
+			link.append($('<img src="' + logo + '" width="20px" height="12px">'));
 			$(sectionId + ' ul li:last').append(link);
 			if (image) {
 				link.append($('<img class="image-news" src="'+ image +'" width="106px height="62px">'));
 			}
 			if (subtitle && title != subtitle) {
 				link.append($('<span>"'+ subtitle +'"</span>'));
+			}
+			if ($('#content').height() < $(sectionId).height()) {
+				$('#content').css('height', $(sectionId).height() + 'px');
 			}
 		});
 	});
