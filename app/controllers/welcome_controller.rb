@@ -31,6 +31,22 @@ class WelcomeController < ApplicationController
     end
   end
   
+  def atarde_news
+    reader=WebReader.new('http://atarde.uol.com.br/ultimas-noticias/')
+    @news = reader.highlights( css: '#listagemUltimas ul li .colNot .box_colNot',
+                               url: 'a',
+                               date: '.hora-comment',
+                               title: '.hoverNot',
+                               subtitle: '.resumoNoticia',
+                               image: 'img',
+                               host: 'http://atarde.uol.com.br'
+                              )
+    respond_to do |format|
+      format.html
+      format.json  { render :json => @news.as_json }
+    end
+  end
+  
   def metro1_news
     reader=WebReader.new('http://www.metro1.com.br/portal/?varSession=noticia&varEditoria=cidade')
     @news = reader.highlights( css: '#lista-de-resultados .resultado',

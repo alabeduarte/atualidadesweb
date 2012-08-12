@@ -30,17 +30,17 @@ a:hover {
 	border-radius: 8px;
 }
 
-#top-left, #top-center, #top-right {
+#top-left, #top-center-left, #top-center-right, #top-right {
 	margin-left: 10%;
 	float: left;
 	width: 19%;
 }
 
-#top-left ul, #top-center ul, #top-right ul {
+#top-left ul, #top-center-left ul, #top-center-right ul, #top-right ul {
 	list-style: none;
 }
 
-#top-left ul li, #top-center ul li, #top-right ul li {
+#top-left ul li, #top-center-left ul li, #top-center-right ul li, #top-right ul li {
 	padding: 15px;
 }
 

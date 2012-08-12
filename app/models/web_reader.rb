@@ -5,9 +5,13 @@ class WebReader
   
   attr_reader :title, :selector, :url
   
-  def initialize(url)
+  def initialize(url, html_file=nil)
     @url = url
-    @selector = Nokogiri::HTML(open(url))
+    if (html_file)
+      @selector = Nokogiri::HTML.parse(File.read(html_file))
+    else
+      @selector = Nokogiri::HTML(open(url))
+    end
     @title = @selector.at_css("title").text
   end
   

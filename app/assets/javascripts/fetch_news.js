@@ -5,7 +5,11 @@ function fetchNews() {
 	);
 	fetchNewsFrom('http://s.glbimg.com/jo/g1/media/widget_header/img/marca.png'
 				, 'g1_bahia_news.json'
-				, '#top-center'
+				, '#top-center-left'
+	);
+	fetchNewsFrom('http://fw2.atarde.com.br/fw/img/2012/01/marcaAtarde1.png'
+				, 'atarde_news.json'
+				, '#top-center-right'
 	);
 	fetchNewsFrom('http://www.metro1.com.br/portal/images/estrutura/logo.png'
 				, 'metro1_news.json'

@@ -5,6 +5,7 @@ Pontodevista::Application.routes.draw do
   controller :welcome do
     get "g1_news", :g1_news
     get "g1_bahia_news", :g1_bahia_news
+    get "atarde_news", :atarde_news
     get "metro1_news", :metro1_news
   end
 
