@@ -46,7 +46,7 @@ class WebReader
         if (args[:host])
           host = args[:host]
           url = "#{host}/#{url}".gsub('../', '') if url
-          image = "#{host}/#{image}".gsub('../', '') if image
+          image = "#{host}/#{image}".gsub('../', '') if image && image.include?('../')
         end
         news << News.new(url: url, keywords: keywords, date: date, title: title, subtitle: subtitle, image: image)
       end
