@@ -3,6 +3,7 @@ class News
   
   def initialize(args)
     @url = args[:url]
+    @keywords = args[:keywords]
     @date = args[:date]
     @title = args[:title]
     @subtitle = args[:subtitle]

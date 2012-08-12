@@ -34,6 +34,11 @@ class WebReader
     @selector.css(args[:css]).each do |item|
       if (item)
         url = item.css(args[:url]).map { |doc| doc['href'] }.first if args[:url]
+        
+        # doc = Nokogiri::HTML(open(url))
+        # keywords = doc.xpath("//meta[@name='Keywords']/@content") if doc
+        keywords = nil
+        
         date = item.css(args[:date]).text if args[:date]
         title = item.css(args[:title]).text if args[:title]
         subtitle = item.css(args[:subtitle]).text if args[:subtitle]
@@ -43,7 +48,7 @@ class WebReader
           url = "#{host}/#{url}".gsub('../', '') if url
           image = "#{host}/#{image}".gsub('../', '') if image
         end
-        news << News.new(url: url, date: date, title: title, subtitle: subtitle, image: image)
+        news << News.new(url: url, keywords: keywords, date: date, title: title, subtitle: subtitle, image: image)
       end
     end
     news
