@@ -3,8 +3,8 @@ class WelcomeController < ApplicationController
   end
   
   def g1_news
-    reader=WebReader.new('http://g1.globo.com')
-    @news = reader.highlights( css: '#glb-corpo .glb-area .chamada-principal',
+    reader=Newly.new('http://g1.globo.com')
+    @news = reader.highlights( selector: '#glb-corpo .glb-area .chamada-principal',
                         url: 'a',
                         title: '.chapeu',
                         subtitle: 'a',
@@ -17,8 +17,8 @@ class WelcomeController < ApplicationController
   end
   
   def g1_bahia_news
-    reader=WebReader.new('http://g1.globo.com/bahia/')
-    @news = reader.highlights( css: '#ultimas-regiao div, #ultimas-regiao ul li',
+    reader=Newly.new('http://g1.globo.com/bahia/')
+    @news = reader.highlights( selector: '#ultimas-regiao div, #ultimas-regiao ul li',
                                url: 'a',
                                date: '.data-hora',
                                title: '.titulo',
@@ -32,8 +32,8 @@ class WelcomeController < ApplicationController
   end
   
   def atarde_news
-    reader=WebReader.new('http://atarde.uol.com.br/ultimas-noticias/')
-    @news = reader.highlights( css: '#listagemUltimas ul li .colNot .box_colNot',
+    reader=Newly.new('http://atarde.uol.com.br/ultimas-noticias/')
+    @news = reader.highlights( selector: '#listagemUltimas ul li .colNot .box_colNot',
                                url: 'a',
                                date: '.hora-comment',
                                title: '.hoverNot',
@@ -48,8 +48,8 @@ class WelcomeController < ApplicationController
   end
   
   def metro1_news
-    reader=WebReader.new('http://www.metro1.com.br/portal/?varSession=noticia&varEditoria=cidade')
-    @news = reader.highlights( css: '#lista-de-resultados .resultado',
+    reader=Newly.new('http://www.metro1.com.br/portal/?varSession=noticia&varEditoria=cidade')
+    @news = reader.highlights( selector: '#lista-de-resultados .resultado',
                                 url: 'a',
                                 date: '.resultado-data',
                                 title: '.resultado-titulo',

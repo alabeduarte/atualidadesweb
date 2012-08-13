@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-describe WebReader do
-  let(:ec_bahia) { ec_bahia = WebReader.new('http://www.ecbahia.com', 'spec/html/ecbahia.html') }
-  let(:g1) { g1_bahia = WebReader.new('http://g1.globo.com', 'spec/html/g1.html') }
-  let(:g1_bahia) { g1_bahia = WebReader.new('http://g1.globo.com/bahia/', 'spec/html/g1_bahia.html') }
-  let(:metro1) { g1_bahia = WebReader.new('http://www.metro1.com.br/portal/?varSession=noticia&varEditoria=cidade', 'spec/html/metro1_cidade.html') }
+describe Newly do
+  let(:ec_bahia) { ec_bahia = Newly.new('http://www.ecbahia.com', 'spec/html/ecbahia.html') }
+  let(:g1) { g1_bahia = Newly.new('http://g1.globo.com', 'spec/html/g1.html') }
+  let(:g1_bahia) { g1_bahia = Newly.new('http://g1.globo.com/bahia/', 'spec/html/g1_bahia.html') }
+  let(:metro1) { g1_bahia = Newly.new('http://www.metro1.com.br/portal/?varSession=noticia&varEditoria=cidade', 'spec/html/metro1_cidade.html') }
   
   it "should fetch ecbahia title" do
     ec_bahia.title.should == "ecbahia.com - \u00e9 goleada tricolor na internet!  (ecbahia, ecbahia.com, ecbahia.com.br, Esporte Clube Bahia)"
   end
   
   it "should fetch highlights from http://g1.globo.com/bahia" do
-    highlights = g1_bahia.highlights( css: '#ultimas-regiao div, #ultimas-regiao ul li',
+    highlights = g1_bahia.highlights( selector: '#ultimas-regiao div, #ultimas-regiao ul li',
                                       url: 'a',
                                       date: '.data-hora',
                                       title: '.titulo',
@@ -23,7 +23,7 @@ describe WebReader do
   
   context "fetching news from http://g1.globo.com" do
     it "should fetch highlights news" do
-      highlights = g1.highlights( css: '#glb-corpo .glb-area .chamada-principal',
+      highlights = g1.highlights( selector: '#glb-corpo .glb-area .chamada-principal',
                                         url: 'a',
                                         title: '.chapeu',
                                         subtitle: '.subtitulo',
@@ -41,7 +41,7 @@ describe WebReader do
     end
     
     xit "should fetch keywords" do
-      highlights = g1.highlights( css: '#glb-corpo .glb-area .chamada-principal',
+      highlights = g1.highlights( selector: '#glb-corpo .glb-area .chamada-principal',
                                         url: 'a',
                                         title: '.chapeu',
                                         subtitle: '.subtitulo',
@@ -53,7 +53,7 @@ describe WebReader do
   end
   
   it "should fetch highlights from http://www.metro1.com.br" do
-    highlights = metro1.highlights( css: '#lista-de-resultados .resultado',
+    highlights = metro1.highlights( selector: '#lista-de-resultados .resultado',
                                       url: 'a',
                                       date: '.resultado-data',
                                       title: '.resultado-titulo',
