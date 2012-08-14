@@ -17,13 +17,13 @@ class WelcomeController < ApplicationController
   end
   
   def g1_bahia_news
-    reader=Newly.new('http://g1.globo.com/bahia/')
-    @news = reader.highlights( selector: '#ultimas-regiao div, #ultimas-regiao ul li',
-                               href: 'a',
-                               date: '.data-hora',
-                               title: '.titulo',
-                               subtitle: '.subtitulo',
-                               img: 'img'
+    reader=Newly.new('http://noticias.uol.com.br/noticias/')
+    @news = reader.highlights( selector: 'div.geral section article.news',
+                               href: 'h1 a',
+                               date: 'time',
+                               title: 'h1 a span',
+                               subtitle: 'p',
+                               img: 'h1 a img'
                               )
     respond_to do |format|
       format.html
@@ -32,14 +32,13 @@ class WelcomeController < ApplicationController
   end
   
   def atarde_news
-    reader=Newly.new('http://atarde.uol.com.br/ultimas-noticias/')
-    @news = reader.highlights( selector: '#listagemUltimas ul li .colNot .box_colNot',
-                               href: 'a',
-                               date: '.hora-comment',
-                               title: '.hoverNot',
-                               subtitle: '.resumoNoticia',
-                               img: 'img',
-                               host: 'http://atarde.uol.com.br'
+    reader=Newly.new('http://www1.folha.uol.com.br/emcimadahora/')
+    @news = reader.highlights( selector: '#newslist .nl2',
+                               href: '.nlArticle a',
+                               date: '.nlHour',
+                               title: '.nlSection',
+                               subtitle: '.nlArticle a',
+                               host: 'http://www1.folha.uol.com.br/emcimadahora/'
                               )
     respond_to do |format|
       format.html
