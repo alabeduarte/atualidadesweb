@@ -5,7 +5,7 @@ gem 'mongo', '1.5.2'
 gem 'bson', '1.5.2'
 gem 'bson_ext', '1.5.2'
 gem 'mongo_mapper', '0.11.0'
-gem 'newly', '1.0.0'
+gem 'newly', '1.1.0'
 gem 'thin'
 
 # Bundle edge Rails instead:
