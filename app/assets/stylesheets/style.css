@@ -30,23 +30,43 @@ a:hover {
 	border-radius: 8px;
 }
 
-#top-left, #top-center-left, #top-center-right, #top-right {
+.breaking-news {
 	margin-left: 10%;
 	float: left;
 	width: 19%;
 }
 
-#top-left ul, #top-center-left ul, #top-center-right ul, #top-right ul {
+.breaking-news ul {
 	list-style: none;
 }
 
-#top-left ul li, #top-center-left ul li, #top-center-right ul li, #top-right ul li {
-	padding: 15px;
+.breaking-news ul li {
+	padding: 10px;
+	height: 100%;
+}
+
+.title-news {
+	font-weight: bold;
+	font-size: 18px;
+	text-shadow: 0 1px 0 #FFF;
+}
+
+.subtitle-news {
+	float: left;
+	margin: 5px;
+	font-size: 14px;
+	text-shadow: 0 1px 0 #FFF;
+}
+
+.title-news:hover, .subtitle-news:hover {
+	color: #B22;
 }
 
 img.image-news {
-	margin: 14px;
-	float: left;
+	margin-left: 2px;
+	margin-top: 14px;
+	margin-bottom: 14px;
+	margin-right: 14px;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
@@ -54,6 +74,8 @@ img.image-news {
 	-webkit-box-shadow: 0 3px 10px #888;
 	-moz-box-shadow: 0 3px 10px #888;
 	box-shadow: 0 3px 10px #888;
+	max-width: 212px;
+	max-height: 124px;
 }
 
 img.image-news:hover {

@@ -1,20 +1,20 @@
 function fetchNews() {
 	fetchNewsFrom('http://s.glbimg.com/jo/g1/media/widget_header/img/marca.png'
 				, 'g1_news.json'
-				, '#top-left'
+				, '#1'
 	);
 	fetchNewsFrom('http://s.glbimg.com/jo/g1/media/widget_header/img/marca.png'
 				, 'g1_bahia_news.json'
-				, '#top-center-left'
+				, '#2'
 	);
 	fetchNewsFrom('http://fw2.atarde.com.br/fw/img/2012/01/marcaAtarde1.png'
 				, 'atarde_news.json'
-				, '#top-center-right'
+				, '#3'
 	);
-	fetchNewsFrom('http://www.metro1.com.br/portal/images/estrutura/logo.png'
-				, 'metro1_news.json'
-				, '#top-right'
-	);
+	// fetchNewsFrom('http://www.metro1.com.br/portal/images/estrutura/logo.png'
+	// 			, 'metro1_news.json'
+	// 			, '#top-right'
+	// );
 }
 
 function fetchNewsFrom(logo, json, sectionId) {
@@ -33,14 +33,21 @@ function fetchNewsFrom(logo, json, sectionId) {
 			if (!title) {
 				title = subtitle;
 			}
-			var link = $('<a id="' + urlId + '" href="' + url + '" target="_blank">' + title + '</a>');			
-			link.append($('<img src="' + logo + '" width="20px" height="12px">'));
+			var link = $('<a id="' + urlId + '" href="' + url + '" target="_blank">');
+			//link.append($('<img src="' + logo + '" width="20px" height="12px">'));
 			$(sectionId + ' ul li:last').append(link);
 			if (image) {
-				link.append($('<img class="image-news" src="'+ image +'" width="106px height="62px">'));
+				link.append($('<img class="image-news" src="'+ image +'">'));
+			}
+			if (title) {
+				link.append($('<span class="title-news">' + title + '</span>'));
 			}
 			if (subtitle && title != subtitle) {
-				link.append($('<span>"'+ subtitle +'"</span>'));
+				if (title) {
+					link.append($('<span class="subtitle-news">'+ subtitle +'</span>'));
+				} else {
+					link.append(subtitle);
+				}
 			}
 			if ($('#content').height() < $(sectionId).height()) {
 				$('#content').css('height', $(sectionId).height() + 'px');
