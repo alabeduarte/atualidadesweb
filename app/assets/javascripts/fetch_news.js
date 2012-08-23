@@ -30,6 +30,13 @@ function arrayShuffle(oldArray) {
 
 function fetchNewsFrom(logo, json, sectionId) {
   $(sectionId).css('display', 'block');
+
+  $(sectionId).mouseover(function() {
+    $(this).addClass('main');
+  }).mouseout(function(){
+      $(this).removeClass('main');
+  });
+
   $(sectionId).append($('<ul>'));
   $.getJSON(json, function(data) {
     $.each(data, function(index, item){
@@ -61,7 +68,8 @@ function fetchNewsFrom(logo, json, sectionId) {
         }
       }
       if ($('#content').height() < $(sectionId).height()) {
-        $('#content').css('height', $(sectionId).height() + 'px');
+        var maxHeight = $(sectionId).height();
+        $('#content').css('height', maxHeight + 'px');
       }
     });
   });
