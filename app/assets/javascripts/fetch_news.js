@@ -1,17 +1,20 @@
+var content = {
+  minHeight: 0
+};
+
 function fetchNews() {
-  var news = [1, 2, 3];
-  var shufleNews = arrayShuffle(news);
+  var news = arrayShuffle([1, 2, 3]);
   fetchNewsFrom('http://s.glbimg.com/jo/g1/media/widget_header/img/marca.png'
         , 'g1_news.json'
-        , '#' + shufleNews[0]
+        , '#' + news[0]
   );
   fetchNewsFrom('http://s.glbimg.com/jo/g1/media/widget_header/img/marca.png'
         , 'g1_bahia_news.json'
-        , '#' + shufleNews[1]
+        , '#' + news[1]
   );
   fetchNewsFrom('http://fw2.atarde.com.br/fw/img/2012/01/marcaAtarde1.png'
         , 'atarde_news.json'
-        , '#' + shufleNews[2]
+        , '#' + news[2]
   );
 }
 
@@ -29,12 +32,12 @@ function arrayShuffle(oldArray) {
 };
 
 function fetchNewsFrom(logo, json, sectionId) {
-  $(sectionId).css('display', 'block');
-
   $(sectionId).mouseover(function() {
     $(this).addClass('main');
+    resize(getHeight(sectionId));
   }).mouseout(function(){
       $(this).removeClass('main');
+      resize(content.minHeight);
   });
 
   $(sectionId).append($('<ul>'));
@@ -67,10 +70,19 @@ function fetchNewsFrom(logo, json, sectionId) {
           link.append(subtitle);
         }
       }
-      if ($('#content').height() < $(sectionId).height()) {
-        var maxHeight = $(sectionId).height();
-        $('#content').css('height', maxHeight + 'px');
-      }
+      content.minHeight = getHeight(sectionId);
+      resize(content.minHeight);
+      $(sectionId).css('display', 'block');
     });
   });
+}
+
+function getHeight(sectionId) {
+  if ($('#content').height() < $(sectionId).height()) {
+    return $(sectionId).height();
+  } else return $('#content').height();
+}
+
+function resize(height) {
+    $('#content').css('height', height + 'px');
 }

@@ -1,8 +1,22 @@
 body {
-  line-height: 1;
+  line-height: 1.4;
   font-size: 14px;
   font-family: "Helvetica Neue",Arial,sans-serif;
+  background-color: #000;
   background: url(../../assets/low_contrast_linen.png);
+}
+
+.logo {
+  margin: 0 auto;
+  height: 100px;
+  width: 637px;
+  background-color: #FFF;
+  background: url(../../assets/logo.png);
+
+  /* border */
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
 }
 
 a, a:visited {
@@ -16,11 +30,13 @@ a:hover {
 }
 
 #content {
+  background-color: #FFF;
   background: transparent url(../../assets/extra_clean_paper.png);
   margin: 0 auto;
-  margin-bottom: 100px;
+  margin-bottom: 0px;
   padding: 0px;
-  padding-top: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
   position: relative;
   width: 80%;
   min-height: 762px;
@@ -31,10 +47,15 @@ a:hover {
 }
 
 .breaking-news {
+  display: none;
   float: left;
   width: 27%;
-  padding-bottom: 10%;
   opacity: 0.5;
+  /* border */
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+
   -webkit-box-shadow: 0 3px 10px #888;
   -moz-box-shadow: 0 3px 10px #888;
   box-shadow: 0 3px 10px #888;

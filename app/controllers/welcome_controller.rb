@@ -1,7 +1,7 @@
 class WelcomeController < ApplicationController
   def index
   end
-  
+
   def g1_news
     reader=Newly.new('http://g1.globo.com')
     @news = reader.highlights( selector: '#glb-corpo .glb-area .chamada-principal',
@@ -15,7 +15,7 @@ class WelcomeController < ApplicationController
       format.json  { render :json => @news.as_json }
     end
   end
-  
+
   def g1_bahia_news
     reader=Newly.new('http://noticias.uol.com.br/noticias/')
     @news = reader.highlights( selector: 'div.geral section article.news',
@@ -30,7 +30,7 @@ class WelcomeController < ApplicationController
       format.json  { render :json => @news.as_json }
     end
   end
-  
+
   def atarde_news
     reader=Newly.new('http://www1.folha.uol.com.br/emcimadahora/')
     @news = reader.highlights( selector: '#newslist .nl2',
@@ -45,7 +45,7 @@ class WelcomeController < ApplicationController
       format.json  { render :json => @news.as_json }
     end
   end
-  
+
   def metro1_news
     reader=Newly.new('http://www.metro1.com.br/portal/?varSession=noticia&varEditoria=cidade')
     @news = reader.highlights( selector: '#lista-de-resultados .resultado',
@@ -61,5 +61,5 @@ class WelcomeController < ApplicationController
       format.json  { render :json => @news.as_json }
     end
   end
-  
+
 end
