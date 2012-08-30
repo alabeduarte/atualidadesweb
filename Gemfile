@@ -5,6 +5,9 @@ gem 'mongo', '1.5.2'
 gem 'bson', '1.5.2'
 gem 'bson_ext', '1.5.2'
 gem 'mongo_mapper', '0.11.0'
+gem 'devise', '2.0.0'
+gem 'mm-devise'
+gem 'cancan'
 gem 'newly', '1.1.0'
 gem 'thin'
 
@@ -33,7 +36,7 @@ group :development, :test do
     gem 'database_cleaner'
 end
 
-group :test do  
+group :test do
   gem 'factory_girl_rails', '~> 1.7.0'
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
