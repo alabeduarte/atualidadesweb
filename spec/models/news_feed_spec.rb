@@ -5,7 +5,6 @@ describe NewsFeed do
                     host: 'http://somenews.com',
                     selector: '#news',
                     url_pattern: 'a',
-                    date_tag: '.date',
                     title: '.title',
                     subtitle: '.subtitle',
                     image_source: 'img',

@@ -4,7 +4,7 @@ gem 'rails', '3.2.6'
 gem 'mongo', '1.5.2'
 gem 'bson', '1.5.2'
 gem 'bson_ext', '1.5.2'
-gem 'mongo_mapper', '0.11.0'
+gem "mongo_mapper", github: "jnunemaker/mongomapper" # pretty much same as you
 gem 'devise', '2.0.0'
 gem 'mm-devise'
 gem 'cancan'

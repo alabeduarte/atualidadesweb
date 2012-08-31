@@ -1,4 +1,6 @@
 Pontodevista::Application.routes.draw do
+  resources :news_feeds
+
   root :to => 'welcome#index'
   get "welcome/index"
   

@@ -1,0 +1,45 @@
+<%= form_for(@news_feed) do |f| %>
+  <% if @news_feed.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@news_feed.errors.count, "error") %> prohibited this news_feed from being saved:</h2>
+
+      <ul>
+      <% @news_feed.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :host %><br />
+    <%= f.text_field :host %>
+  </div>
+  <div class="field">
+    <%= f.label :selector %><br />
+    <%= f.text_field :selector %>
+  </div>
+  <div class="field">
+    <%= f.label :url_pattern %><br />
+    <%= f.text_field :url_pattern %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :subtitle %><br />
+    <%= f.text_field :subtitle %>
+  </div>
+  <div class="field">
+    <%= f.label :image_source %><br />
+    <%= f.text_field :image_source %>
+  </div>
+  <div class="field">
+    <%= f.label :date_tag %><br />
+    <%= f.text_field :date_tag %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
