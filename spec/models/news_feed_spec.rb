@@ -69,4 +69,9 @@ describe NewsFeed do
     end
   end
 
+  context "fecthing news" do
+    xit "should fetch news from your host" do
+    end
+  end
+
 end
