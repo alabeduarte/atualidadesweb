@@ -9,6 +9,7 @@ class NewsFeed
   key :date_tag, String
   key :host, String
 
-  validates :host, :selector, :url_pattern, :title, :subtitle, :presence => true
+  validates :selector, :url_pattern, :title, :subtitle, :presence => true
+  validates :host, :format => URI::regexp(%w(http https)), :presence => true
 
 end

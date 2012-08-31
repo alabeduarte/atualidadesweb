@@ -15,7 +15,7 @@ describe NewsFeed do
     news_feed.should_not be_nil
   end
 
-  context "a news feed required validations" do
+  context "a news feed required fields" do
     it "host should not be empty" do
       news_feed.host = nil
     end
@@ -41,7 +41,7 @@ describe NewsFeed do
     end
   end
 
-  context "a news feed optional validations" do
+  context "a news feed optional fields" do
     it "image source should not be empty" do
       news_feed.image_source = nil
     end
@@ -51,6 +51,21 @@ describe NewsFeed do
     end
 
     after do
+      news_feed.should be_valid
+    end
+  end
+
+  context "news feed host" do
+    it "when 'blabla' should not be valid" do
+      news_feed.host = 'blabla'
+      news_feed.should_not be_valid
+    end
+    it "when 'http://myhost.com' should be valid" do
+      news_feed.host = 'http://myhost.com'
+      news_feed.should be_valid
+    end
+    it "when 'http://www.myhost.com' should be valid" do
+      news_feed.host = 'http://www.myhost.com'
       news_feed.should be_valid
     end
   end
