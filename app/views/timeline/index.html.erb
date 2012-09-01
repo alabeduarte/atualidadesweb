@@ -1,0 +1,9 @@
+<h1>Listing timeline</h1>
+<table>
+<% @news.each do |n| %>
+  <tr>
+    <td><%= n.title %></td>
+    <td><%= n.subtitle %></td>
+  </tr>
+<% end %>
+</table>

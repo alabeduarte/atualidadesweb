@@ -1,14 +1,14 @@
 require 'spec_helper'
 
 describe NewsFeed do
-  let(:news_feed) { news_feed = NewsFeed.new(
-                    host: 'http://somenews.com',
-                    selector: '#news',
-                    url_pattern: 'a',
-                    title: '.title',
-                    subtitle: '.subtitle',
-                    image_source: 'img',
-                    date_tag: '.date') }
+  let(:news_feed) { NewsFeed.new(
+                                  host: 'http://somenews.com',
+                                  selector: '#news',
+                                  url_pattern: 'a',
+                                  title: '.title',
+                                  subtitle: '.subtitle',
+                                  image_source: 'img',
+                                  date_tag: '.date') }
   it "should save news feed" do
     news_feed.save
     news_feed.should_not be_nil
@@ -70,7 +70,16 @@ describe NewsFeed do
   end
 
   context "fecthing news" do
-    xit "should fetch news from your host" do
+    let(:reader) { mock(:newly) }
+    before do
+      news = []
+      10.times {|n| news << mock(:news)}
+      reader.stub(:new).with(anything).and_return(reader)
+      reader.stub(:highlights).with(anything).and_return(news)
+    end
+    it "should fetch news from your host" do
+      reader.should_receive(:highlights).with(anything)
+      news_feed.fetch(reader).size.should == 10
     end
   end
 

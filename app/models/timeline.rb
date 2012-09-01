@@ -1,12 +1,13 @@
 class Timeline
 
-  def initialize
+  def initialize(repository=NewsFeed)
     @news = []
-    @feeds = NewsFeed.all
+    @feeds ||= repository.all
+    @feeds.each {|f| @news.concat(f.fetch) }
   end
 
-  def all
-
+  def list
+    @news
   end
 
 end

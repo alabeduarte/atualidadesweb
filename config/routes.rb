@@ -1,4 +1,6 @@
 Pontodevista::Application.routes.draw do
+  get "timeline/index"
+
   resources :news_feeds
 
   root :to => 'welcome#index'

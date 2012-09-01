@@ -1,11 +1,41 @@
 require 'spec_helper'
 
 describe Timeline do
-  #   before(:all) do
-  #     3.times {|n| create(:news_feed)}
-  #   end
+  let(:repository) { mock(:news_feed) }
 
-  xit "should organize timeline by news feed" do
-    Timeline.all.size.should == 3
+  before do
+    feed_1 = create_feed(url: 'http://test1.com', with_total_news: 3)
+    feed_2 = create_feed(url: 'http://test2.com', with_total_news: 6)
+    feed_3 = create_feed(url: 'http://test3.com', with_total_news: 7)
+    repository.stub(:all).and_return [feed_1, feed_2, feed_3]
+  end
+
+  it "should retrieve news from feeds to timeline" do
+    timeline = Timeline.new(repository)
+    news = timeline.list
+    news.size.should == 16
+  end
+
+  xit "should get news from specific feed url to timeline" do
+    timeline = Timeline.new(repository)
+    news = timeline.get('http://test1.com')
+    news.size.should == 3
+  end
+
+private
+  def create_feed(args)
+    feed = mock(:news_feed)
+    feed.stub(:fetch).and_return(create_news(args[:url], args[:with_total_news]))
+    feed
+  end
+
+  def create_news(url, total_news)
+    list = []
+    total_news.times do |n|
+      news = mock(:news)
+      news.stub(:host).and_return(url)
+      list << news
+    end
+    list
   end
 end
