@@ -4,6 +4,8 @@ body {
   font-family: "Helvetica Neue",Arial,sans-serif;
   background-color: #000;
   background: url(../../assets/low_contrast_linen.png);
+  font-size:100%;
+  -webkit-text-size-adjust:none;
 }
 
 .logo {
