@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pontodevista</title>
-  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'/>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <title>Atualidades|Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag 'style' %>
+  <%= stylesheet_link_tag 'mobile', :media => 'screen and (max-width: 320px)' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -11,7 +12,7 @@
     <div id="content">
         <%= yield %>
     </div>
-    <%= javascript_include_tag "application" %>
+    <%= javascript_include_tag "application", 'hiddenAddressBar' %>
     <script type="text/javascript">
         <%= yield :javascript %>
     </script>

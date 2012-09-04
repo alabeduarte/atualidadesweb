@@ -7,7 +7,6 @@ body {
   background-color: #000;
   background: url(../../assets/low_contrast_linen.png);
   font-size:100%;
-  -webkit-text-size-adjust:none;
 }
 
 .logo {
@@ -138,4 +137,33 @@ img.image-news:hover {
   -webkit-box-shadow: 0 3px 10px #B22;
   -moz-box-shadow: 0 3px 10px #B22;
   box-shadow: 0 3px 10px #B22;
+}
+
+
+/* aplica somente a partir de 320px */
+@media screen and (min-width: 320px) {
+  body {
+    line-height: 1.6;
+    font-size:100%;
+    -webkit-text-size-adjust:none;
+  }
+
+  #content {
+    width: 96%;
+  }
+
+  .logo {
+    background: transparent;
+    height: 0px;
+    width: 0px;
+  }
+
+  .breaking-news {
+    width: 99%;
+  }
+  .breaking-news ul li {
+    padding: 0px;
+    height: 100%;
+  }
+
 }

@@ -1,9 +1,21 @@
-<h1>Listing timeline</h1>
-<table>
-<% @news.each do |n| %>
-  <tr>
-    <td><%= n.title %></td>
-    <td><%= n.subtitle %></td>
-  </tr>
-<% end %>
-</table>
+<section class="breaking-news visible">
+  <ul>
+    <% @news.each do |n| %>
+      <li>
+        <a href="<%= n.url %>" target="_blank">
+          <% if n.image %>
+            <img class="image-news" src="<%= n.image %>">
+          <% end %>
+          <% if n.title %>
+            <span class="title-news"><%= n.title %></span>
+          <% end %>
+          <% if n.subtitle && n.subtitle != n.title %>
+            <span class="title-news"><%= n.subtitle %></span>
+          <% else %>
+            <span class="subtitle-news"><%= n.subtitle %></span>
+          <% end %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</section>
