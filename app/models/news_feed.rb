@@ -12,7 +12,7 @@ class NewsFeed
   validates :selector, :url_pattern, :title, :subtitle, :presence => true
   validates :host, :format => URI::regexp(%w(http https)), :presence => true
 
-  def fetch(reader=Newly)
+  def fetch(reader)
     reader.new(@host).highlights(
                                   selector: @selector,
                                   href: @url_pattern,

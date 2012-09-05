@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe Timeline do
   let(:repository) { mock(:news_feed) }
+  let(:reader) { mock(:newly) }
 
   before do
     feed_1 = create_feed(url: 'http://test1.com', with_total_news: 3)
@@ -11,19 +12,19 @@ describe Timeline do
   end
 
   it "should retrieve all news from feeds to timeline" do
-    timeline = Timeline.new(repository)
+    timeline = Timeline.new(repository, reader)
     news = timeline.all
     news.size.should == 16
   end
 
   it "should get news from specific feed url to timeline" do
-    timeline = Timeline.new(repository)
+    timeline = Timeline.new(repository, reader)
     news = timeline.get('http://test1.com')
     news.size.should == 3
   end
 
   it "should not get news when url feed does not exist" do
-    timeline = Timeline.new(repository)
+    timeline = Timeline.new(repository, reader)
     news = timeline.get('http://xxx.com')
     news.should be_empty
   end
