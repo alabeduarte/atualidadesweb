@@ -139,3 +139,10 @@ img.image-news:hover {
   -moz-box-shadow: 0 3px 10px #B22;
   box-shadow: 0 3px 10px #B22;
 }
+
+table, th, tr, td {
+  border: 1px solid black
+  -webkit-box-shadow: 0 3px 10px #B22;
+  -moz-box-shadow: 0 3px 10px #B22;
+  box-shadow: 0 3px 10px #B22;
+}

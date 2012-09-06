@@ -35,6 +35,27 @@
   <%= @news_feed.date_tag %>
 </p>
 
-
-<%= link_to 'Edit', edit_news_feed_path(@news_feed) %> |
-<%= link_to 'Back', news_feeds_path %>
+<fieldset>
+  <%= link_to 'Edit', edit_news_feed_path(@news_feed) %> |
+  <%= link_to 'Back', news_feeds_path %>
+  <legend>Preview</legend>
+  <ul>
+    <% @news.each do |n| %>
+      <li>
+        <a href="<%= n.url %>" target="_blank">
+          <% if n.image %>
+            <img class="image-news" src="<%= n.image %>">
+          <% end %>
+          <% if n.title %>
+            <span class="title-news"><%= n.title %></span>
+          <% end %>
+          <% if n.subtitle && n.subtitle != n.title %>
+            <span class="title-news"><%= n.subtitle %></span>
+          <% else %>
+            <span class="subtitle-news"><%= n.subtitle %></span>
+          <% end %>
+        </a>
+      </li>
+    <% end %>
+  </ul>
+</fieldset>
