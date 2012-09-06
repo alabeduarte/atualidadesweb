@@ -39,7 +39,6 @@ GEM
       multi_json (~> 1.0)
     ansi (1.4.3)
     arel (3.0.2)
-    bcrypt-ruby (3.0.1)
     bson (1.5.2)
     bson_ext (1.5.2)
       bson (= 1.5.2)
@@ -54,11 +53,6 @@ GEM
     coffee-script-source (1.3.3)
     daemons (1.1.9)
     database_cleaner (0.8.0)
-    devise (2.0.0)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.0.3)
-      railties (~> 3.1)
-      warden (~> 1.1)
     diff-lcs (1.1.3)
     erubis (2.7.0)
     eventmachine (0.12.10)
@@ -81,16 +75,12 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.19)
-    mm-devise (2.0)
-      devise (>= 1.2)
-      mongo_mapper (>= 0.9.0)
     mongo (1.5.2)
       bson (= 1.5.2)
     multi_json (1.3.6)
     newly (1.1.0)
       nokogiri
     nokogiri (1.5.5)
-    orm_adapter (0.0.6)
     plucky (0.5.1)
       mongo (~> 1.5)
     polyglot (0.3.3)
@@ -156,8 +146,6 @@ GEM
     uglifier (1.2.7)
       execjs (>= 0.3.0)
       multi_json (~> 1.3)
-    warden (1.2.1)
-      rack (>= 1.0)
     webrat (0.7.3)
       nokogiri (>= 1.2.0)
       rack (>= 1.0)
@@ -172,10 +160,8 @@ DEPENDENCIES
   cancan
   coffee-rails (~> 3.2.1)
   database_cleaner
-  devise (= 2.0.0)
   factory_girl_rails (~> 1.7.0)
   jquery-rails
-  mm-devise
   mongo (= 1.5.2)
   mongo_mapper!
   newly (= 1.1.0)

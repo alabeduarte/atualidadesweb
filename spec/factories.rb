@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :news_feed do
+  factory :feed do
     sequence(:host) {|n| "http://#{n}host.com" }
     selector '#news'
     url_pattern 'a'

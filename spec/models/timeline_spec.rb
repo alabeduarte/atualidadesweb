@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Timeline do
-  let(:repository) { mock(:news_feed) }
+  let(:repository) { mock(:feed) }
   let(:reader) { mock(:newly) }
 
   before do
@@ -31,7 +31,7 @@ describe Timeline do
 
 private
   def create_feed(args)
-    feed = mock(:news_feed)
+    feed = mock(:feed)
     feed.stub(:host).and_return(args[:url])
     feed.stub(:fetch).and_return(create_news(args[:url], args[:with_total_news]))
     feed

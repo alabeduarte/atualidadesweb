@@ -1,4 +1,4 @@
-class NewsFeed
+class Feed
   include MongoMapper::Document
 
   key :host, String

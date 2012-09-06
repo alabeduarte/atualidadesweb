@@ -1,6 +1,6 @@
 class TimelineController < ApplicationController
   def index
-    timeline = Timeline.new(NewsFeed, Newly)
+    timeline = Timeline.new(Feed, Newly)
     @news = timeline.all
     # @news = []
   end

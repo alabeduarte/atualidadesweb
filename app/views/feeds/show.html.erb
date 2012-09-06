@@ -2,42 +2,42 @@
 
 <p>
   <b>Host:</b>
-  <%= @news_feed.host %>
+  <%= @feed.host %>
 </p>
 
 <p>
   <b>Selector:</b>
-  <%= @news_feed.selector %>
+  <%= @feed.selector %>
 </p>
 
 <p>
   <b>Url pattern:</b>
-  <%= @news_feed.url_pattern %>
+  <%= @feed.url_pattern %>
 </p>
 
 <p>
   <b>Title:</b>
-  <%= @news_feed.title %>
+  <%= @feed.title %>
 </p>
 
 <p>
   <b>Subtitle:</b>
-  <%= @news_feed.subtitle %>
+  <%= @feed.subtitle %>
 </p>
 
 <p>
   <b>Image source:</b>
-  <%= @news_feed.image_source %>
+  <%= @feed.image_source %>
 </p>
 
 <p>
   <b>Date tag:</b>
-  <%= @news_feed.date_tag %>
+  <%= @feed.date_tag %>
 </p>
 
 <fieldset>
-  <%= link_to 'Edit', edit_news_feed_path(@news_feed) %> |
-  <%= link_to 'Back', news_feeds_path %>
+  <%= link_to 'Edit', edit_feed_path(@feed) %> |
+  <%= link_to 'Back', feeds_path %>
   <legend>Preview</legend>
   <ul>
     <% @news.each do |n| %>

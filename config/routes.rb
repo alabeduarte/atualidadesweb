@@ -1,11 +1,10 @@
 Pontodevista::Application.routes.draw do
-  get "timeline/index"
 
-  resources :news_feeds
+  resources :feeds, :timeline
 
   root :to => 'welcome#index'
   get "welcome/index"
-  
+
   controller :welcome do
     get "g1_news", :g1_news
     get "g1_bahia_news", :g1_bahia_news

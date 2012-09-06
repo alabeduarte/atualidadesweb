@@ -1,0 +1,35 @@
+<h1>Listing feeds</h1>
+
+<table>
+  <tr>
+    <th>Host</th>
+    <th>Selector</th>
+    <th>Url pattern</th>
+    <th>Title</th>
+    <th>Subtitle</th>
+    <th>Image source</th>
+    <th>Date tag</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @feeds.each do |feed| %>
+  <tr>
+    <td><%= feed.host %></td>
+    <td><%= feed.selector %></td>
+    <td><%= feed.url_pattern %></td>
+    <td><%= feed.title %></td>
+    <td><%= feed.subtitle %></td>
+    <td><%= feed.image_source %></td>
+    <td><%= feed.date_tag %></td>
+    <td><%= link_to 'Show', feed %></td>
+    <td><%= link_to 'Edit', edit_feed_path(feed) %></td>
+    <td><%= link_to 'Destroy', feed, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New News feed', new_feed_path %>
