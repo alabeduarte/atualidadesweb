@@ -8,7 +8,7 @@ gem "mongo_mapper", github: "jnunemaker/mongomapper" # pretty much same as you
 # gem 'devise', '2.0.0'
 # gem 'mm-devise'
 gem 'cancan'
-gem 'newly', '1.1.0'
+gem 'newly', github: "alabeduarte/newly" # pretty much same as you
 gem 'thin'
 
 # Bundle edge Rails instead:

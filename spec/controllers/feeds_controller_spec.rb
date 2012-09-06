@@ -20,6 +20,7 @@ describe FeedsController do
 
   describe "GET show" do
     it "assigns the requested feed as @feed" do
+      Newly.stub(:new).with(anything) { mock(:newly) }
       Feed.stub(:find).with("37") { mock_feed }
       get :show, :id => "37"
       assigns(:feed).should be(mock_feed)

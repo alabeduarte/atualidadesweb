@@ -3,7 +3,7 @@ class Timeline
   def initialize(repository, reader)
     @news = Hash.new
     @feeds ||= repository.all
-    @feeds.each {|f| @news[f.host] = f.fetch(reader) }
+    @feeds.each {|f| @news[f.url] = f.fetch(reader.new(f.url)) }
   end
 
   def all
