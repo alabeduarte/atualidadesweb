@@ -13,21 +13,9 @@ describe Timeline do
   end
 
   it "should retrieve all news from feeds to timeline" do
-    timeline = Timeline.new(repository, reader)
-    news = timeline.all
+    timeline = Timeline.new(repository)
+    news = timeline.all(reader)
     news.size.should == 16
-  end
-
-  it "should get news from specific feed url to timeline" do
-    timeline = Timeline.new(repository, reader)
-    news = timeline.get('http://test1.com')
-    news.size.should == 3
-  end
-
-  it "should not get news when url feed does not exist" do
-    timeline = Timeline.new(repository, reader)
-    news = timeline.get('http://xxx.com')
-    news.should be_empty
   end
 
 private
