@@ -8,10 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <section class="logo"></section>
-    <div id="content">
-        <%= yield %>
-    </div>
+    <%= yield %>
     <%= javascript_include_tag "application", 'hiddenAddressBar' %>
     <script type="text/javascript">
         <%= yield :javascript %>
