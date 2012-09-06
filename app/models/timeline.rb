@@ -6,12 +6,12 @@ class Timeline
 
   def all(reader)
     news = []
-    @feeds.each {|f| news.concat fetch(f, reader) }
+    @feeds.each {|f| news.concat fetch_news(f, reader) }
     return news
   end
 
 private
-  def fetch(feed, reader)
+  def fetch_news(feed, reader)
     url = feed.url
     feed.fetch reader.new(url)
   end
