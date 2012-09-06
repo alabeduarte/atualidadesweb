@@ -13,6 +13,7 @@ class Timeline
 private
   def fetch_news(feed, reader)
     url = feed.url
+    # TODO need cache here
     feed.fetch reader.new(url)
   end
 
