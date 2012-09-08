@@ -42,11 +42,20 @@ describe Reader do
                           subtitle: '.summary',
                           image_source: '',
                           date_tag: '.date') }
+  let(:g1_plantao_feed) { Feed.new(
+                          url: 'http://g1.globo.com',
+                          selector: '.lista-noticia-plantao li',
+                          url_pattern: 'a',
+                          title: '.chapeu',
+                          subtitle: '.titulo',
+                          date_tag: '.item-noticia-hora',
+                          image_source: 'a.borda-interna img') }
   let(:g1_reader) { build_reader_with(g1_feed.url, 'spec/html/g1.html') }
   let(:uol_reader) { build_reader_with(uol_feed.url, 'spec/html/uol.html') }
   let(:terra_reader) { build_reader_with(terra_feed.url, 'spec/html/terra.html') }
   let(:folha_reader) { build_reader_with(folha_feed.url, 'spec/html/folha.html') }
   let(:bbc_reader) { build_reader_with(bbc_feed.url, 'spec/html/bbc.html') }
+  let(:g1_plantao_reader) { build_reader_with(g1_plantao_feed.url, 'spec/html/g1_plantao.html') }
 
   context "fetching news from http://g1.globo.com" do
     it "should fetch highlights news" do
@@ -114,6 +123,18 @@ describe Reader do
       highlights[0].url.should == 'http://www.bbc.co.uk/portuguese/ultimas_noticias/2012/09/120908_aberto_tenis_mau_tempo_lgb.shtml'
       highlights[0].title.should == 'Mau tempo adia final feminina do Aberto de Tenis dos Estados Unidos'
       highlights[0].subtitle.should == 'A americana Serena Williams e a bielorrussa Victoria Azarenka se enfrentarao no domingo (9).'
+    end
+  end
+
+  context "fetching news from 'plantao' of http://g1.globo.com" do
+    it "should fetch highlights news" do
+      highlights = g1_plantao_feed.fetch(g1_plantao_reader)
+      highlights.should_not be_empty
+      highlights[0].date.should == '19h47'
+      highlights[0].url.should == 'http://g1.globo.com/minas-gerais/triangulo-mineiro/noticia/2012/09/artesa-de-uberaba-mg-transforma-folhas-em-pecas-de-decoracao.html'
+      highlights[0].image.should == 'http://s2.glbimg.com/eqFijf37GQ7iGc3TFjjNA59TGhvbJhrKOwVcofvElikZFx_jY20C6579lkfZOxYd/s.glbimg.com/jo/g1/f/original/2012/09/08/folharte02.jpg'
+      highlights[0].title.should == 'Triangulo Mineiro'
+      highlights[0].subtitle.should == 'Artesa de Uberaba, MG, transforma folhas em pecas de decoracao'
     end
   end
 private

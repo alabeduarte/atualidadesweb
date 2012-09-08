@@ -48,6 +48,7 @@
     <% @news.each do |n| %>
       <li>
         <a href="<%= n.url %>" target="_blank">
+          <time><%= n.date %></time>
           <% if n.image %>
             <img class="image-news" src="<%= n.image %>">
           <% end %>

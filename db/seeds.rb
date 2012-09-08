@@ -1,11 +1,36 @@
+# Feed.create(
+#               url: 'http://g1.globo.com',
+#               host: 'http://g1.globo.com',
+#               selector: '#glb-corpo .glb-area .chamada-principal',
+#               url_pattern: 'a',
+#               title: '.chapeu',
+#               subtitle: 'a',
+#               image_source: '.foto a img')
 Feed.create(
               url: 'http://g1.globo.com',
               host: 'http://g1.globo.com',
-              selector: '#glb-corpo .glb-area .chamada-principal',
+              selector: '#glb-corpo .glb-primeiro .glb-area .destaque',
               url_pattern: 'a',
               title: '.chapeu',
               subtitle: 'a',
               image_source: '.foto a img')
+Feed.create(
+              url: 'http://g1.globo.com',
+              host: 'http://g1.globo.com',
+              selector: '#glb-corpo .glb-ultimo .glb-area .destaque',
+              url_pattern: 'a',
+              title: '.chapeu',
+              subtitle: 'a',
+              image_source: '.foto a img')
+Feed.create(
+              url: 'http://g1.globo.com',
+              host: 'http://g1.globo.com',
+              selector: '.lista-noticia-plantao li',
+              url_pattern: 'a',
+              title: '.chapeu',
+              subtitle: '.titulo',
+              date_tag: '.item-noticia-hora',
+              image_source: 'a.borda-interna img')
 Feed.create(
               url: 'http://noticias.uol.com.br/noticias/',
               host: 'http://uol.com.br/',
