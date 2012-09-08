@@ -1,7 +1,12 @@
+require 'cache'
 class Timeline
 
   def initialize(repository)
-    @feeds ||= repository.all
+    @feeds = repository.all
+  end
+
+  def all_cached(reader)
+    Cache.fetch(key: 'timeline.all') { all(reader) }
   end
 
   def all(reader)
@@ -13,7 +18,6 @@ class Timeline
 private
   def fetch_news(feed, reader)
     url = feed.url
-    # TODO need cache here
     feed.fetch reader.new(url)
   end
 

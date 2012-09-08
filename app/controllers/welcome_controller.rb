@@ -3,7 +3,7 @@ class WelcomeController < ApplicationController
   end
 
   def g1_news
-    reader=Newly.new('http://g1.globo.com')
+    reader=Reader.new('http://g1.globo.com')
     @news = reader.highlights( selector: '#glb-corpo .glb-area .chamada-principal',
                         url: 'a',
                         title: '.chapeu',
@@ -17,7 +17,7 @@ class WelcomeController < ApplicationController
   end
 
   def g1_bahia_news
-    reader=Newly.new('http://noticias.uol.com.br/noticias/')
+    reader=Reader.new('http://noticias.uol.com.br/noticias/')
     @news = reader.highlights( selector: 'div.geral section article.news',
                                href: 'h1 a',
                                date: 'time',
@@ -32,7 +32,7 @@ class WelcomeController < ApplicationController
   end
 
   def atarde_news
-    reader=Newly.new('http://www1.folha.uol.com.br/emcimadahora/')
+    reader=Reader.new('http://www1.folha.uol.com.br/emcimadahora/')
     @news = reader.highlights( selector: '#newslist .nl2',
                                href: '.nlArticle a',
                                date: '.nlHour',
@@ -47,7 +47,7 @@ class WelcomeController < ApplicationController
   end
 
   def metro1_news
-    reader=Newly.new('http://www.metro1.com.br/portal/?varSession=noticia&varEditoria=cidade')
+    reader=Reader.new('http://www.metro1.com.br/portal/?varSession=noticia&varEditoria=cidade')
     @news = reader.highlights( selector: '#lista-de-resultados .resultado',
                                 href: 'a',
                                 date: '.resultado-data',

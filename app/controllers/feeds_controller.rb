@@ -14,7 +14,7 @@ class FeedsController < ApplicationController
   # GET /feeds/1.json
   def show
     @feed = Feed.find(params[:id])
-    @news = @feed.fetch(Newly.new(@feed.url))
+    @news = @feed.fetch(Reader.new(@feed.url))
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @feed }

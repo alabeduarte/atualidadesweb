@@ -1,7 +1,6 @@
 class TimelineController < ApplicationController
   def index
     timeline = Timeline.new(Feed)
-    @news = timeline.all(Newly)
-    # @news = []
+    @news = timeline.all_cached(Reader)
   end
 end

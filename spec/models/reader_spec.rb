@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Newly do
+describe Reader do
   let(:selector) { Nokogiri::HTML }
   let(:g1) { build_reader_with('http://g1.globo.com', 'spec/html/g1.html') }
   let(:metro1) { build_reader_with('http://www.metro1.com.br/portal/?varSession=noticia&varEditoria=cidade', 'spec/html/metro1_cidade.html') }
@@ -69,7 +69,7 @@ describe Newly do
   end
 private
   def build_reader_with(host, html)
-    Newly.new(host, parse(html))
+    Reader.new(host, parse(html))
   end
   def parse(path)
     selector.parse(File.read(path))

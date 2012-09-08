@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe Feed do
   let(:feed) { Feed.new(
-                                  url: 'http://somenews.com',
-                                  selector: '#news',
-                                  url_pattern: 'a',
-                                  title: '.title',
-                                  subtitle: '.subtitle',
-                                  image_source: 'img',
-                                  host: 'http://somenews.com',
-                                  date_tag: '.date') }
+                        url: 'http://somenews.com',
+                        selector: '#news',
+                        url_pattern: 'a',
+                        title: '.title',
+                        subtitle: '.subtitle',
+                        image_source: 'img',
+                        host: 'http://somenews.com',
+                        date_tag: '.date') }
   it "should save news feed" do
     feed.save
     feed.should_not be_nil
@@ -64,8 +64,7 @@ describe Feed do
       feed.url = 'blabla'
       feed.should_not be_valid
     end
-    it "when 'http://myhost
-.com' should be valid" do
+    it "when 'http://myhost.com' should be valid" do
       feed.url = 'http://myhost.com'
       feed.should be_valid
     end
@@ -76,7 +75,7 @@ describe Feed do
   end
 
   context "fecthing news" do
-    let(:reader) { mock(:newly) }
+    let(:reader) { mock(:reader) }
     before do
       news = []
       10.times {|n| news << mock(:news)}
