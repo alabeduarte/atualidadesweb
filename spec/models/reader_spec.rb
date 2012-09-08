@@ -8,7 +8,8 @@ describe Reader do
                           url_pattern: 'a',
                           title: '.chapeu',
                           subtitle: '.subtitulo',
-                          image_source: '.foto a img') }
+                          image_source: '.foto a img',
+                          featured_level: 0) }
   let(:uol_feed) { Feed.new(
                           url: 'http://noticias.terra.com.br/ultimasnoticias/0,,EI188,00.html',
                           selector: 'div.geral section article.news',
@@ -49,7 +50,8 @@ describe Reader do
                           title: '.chapeu',
                           subtitle: '.titulo',
                           date_tag: '.item-noticia-hora',
-                          image_source: 'a.borda-interna img') }
+                          image_source: 'a.borda-interna img',
+                          featured_level: 1) }
   let(:g1_reader) { build_reader_with(g1_feed.url, 'spec/html/g1.html') }
   let(:uol_reader) { build_reader_with(uol_feed.url, 'spec/html/uol.html') }
   let(:terra_reader) { build_reader_with(terra_feed.url, 'spec/html/terra.html') }
@@ -61,6 +63,7 @@ describe Reader do
     it "should fetch highlights news" do
       highlights = g1_feed.fetch(g1_reader)
       highlights.should_not be_empty
+      highlights[0].featured_level.should == 0
       highlights[0].url.should == 'http://g1.globo.com/mundo/noticia/2012/08/ira-encerra-resgate-apos-terremotos-e-revisa-mortos-para-227-diz-tv-estatal.html'
       highlights[0].subtitle.should == 'Tremores deixaram 1.380 pessoas feridas.'
 
@@ -130,6 +133,7 @@ describe Reader do
     it "should fetch highlights news" do
       highlights = g1_plantao_feed.fetch(g1_plantao_reader)
       highlights.should_not be_empty
+      highlights[0].featured_level.should == 1
       highlights[0].date.should == '19h47'
       highlights[0].url.should == 'http://g1.globo.com/minas-gerais/triangulo-mineiro/noticia/2012/09/artesa-de-uberaba-mg-transforma-folhas-em-pecas-de-decoracao.html'
       highlights[0].image.should == 'http://s2.glbimg.com/eqFijf37GQ7iGc3TFjjNA59TGhvbJhrKOwVcofvElikZFx_jY20C6579lkfZOxYd/s.glbimg.com/jo/g1/f/original/2012/09/08/folharte02.jpg'

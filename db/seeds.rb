@@ -32,6 +32,14 @@ Feed.create(
               date_tag: '.item-noticia-hora',
               image_source: 'a.borda-interna img')
 Feed.create(
+              url: 'http://www.uol.com.br/',
+              host: 'http://www.uol.com.br/',
+              selector: '.moduloChamada',
+              url_pattern: 'a',
+              title: 'a strong',
+              subtitle: 'a',
+              image_source: 'a img')
+Feed.create(
               url: 'http://noticias.uol.com.br/noticias/',
               host: 'http://uol.com.br/',
               selector: 'div.geral section article.news',
@@ -57,6 +65,14 @@ Feed.create(
               subtitle: '',
               image_source: '',
               date_tag: '')
+Feed.create(
+              url: 'http://www.bbc.co.uk/portuguese/',
+              host: 'http://www.bbc.co.uk/',
+              selector: '.teaser',
+              url_pattern: 'a',
+              title: 'a',
+              subtitle: '.summary',
+              image_source: 'a img')
 Feed.create(
               url: 'http://www.bbc.co.uk/portuguese/ultimas_noticias/',
               host: 'http://www.bbc.co.uk/',

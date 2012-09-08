@@ -9,6 +9,7 @@ class Feed
   key :image_source, String
   key :date_tag, String
   key :host, String
+  key :featured_level, Integer
 
   validates :selector, :url_pattern, :title, :presence => true
   validates :url, :host, :format => URI::regexp(%w(http https)), :presence => true
@@ -21,7 +22,8 @@ class Feed
                       subtitle: @subtitle,
                       img: @image_source,
                       date: @date_tag,
-                      host: @host
+                      host: @host,
+                      featured_level: @featured_level
                       )
   end
 

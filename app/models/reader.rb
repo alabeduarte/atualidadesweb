@@ -14,6 +14,7 @@ class Reader
     news = Array.new
     @selector.css(args[:selector]).each do |item|
       if (item)
+        level = args[:featured_level]
         href = find_link(item, args[:href], 'href')
         date = find(item, args[:date])
         title = find(item, args[:title])
@@ -24,7 +25,7 @@ class Reader
           href = "#{host}/#{href}".gsub('../', '') if href && !href.include?('http')
           image = "#{host}/#{image}".gsub('../', '') if image && image.include?('../')
         end
-        news << News.new(url: href, date: date, title: title, subtitle: subtitle, image: img)
+        news << News.new(url: href, date: date, title: title, subtitle: subtitle, image: img, featured_level: level)
       end
     end
     news
