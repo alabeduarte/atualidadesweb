@@ -25,9 +25,28 @@ describe Reader do
                           subtitle: '',
                           image_source: '',
                           date_tag: '') }
+  let(:folha_feed) { Feed.new(
+                          url: 'http://www1.folha.uol.com.br/emcimadahora/',
+                          selector: '#newslist .nl2',
+                          url_pattern: '.nlArticle a',
+                          title: '.nlSection',
+                          subtitle: '.nlArticle a',
+                          image_source: '',
+                          date_tag: '.nlHour') }
+  let(:bbc_feed) { Feed.new(
+                          url: 'http://www.bbc.co.uk/portuguese/ultimas_noticias/',
+                          host: 'http://www.bbc.co.uk',
+                          selector: '.content li.ts-headline',
+                          url_pattern: 'a',
+                          title: 'a',
+                          subtitle: '.summary',
+                          image_source: '',
+                          date_tag: '.date') }
   let(:g1_reader) { build_reader_with(g1_feed.url, 'spec/html/g1.html') }
   let(:uol_reader) { build_reader_with(uol_feed.url, 'spec/html/uol.html') }
   let(:terra_reader) { build_reader_with(terra_feed.url, 'spec/html/terra.html') }
+  let(:folha_reader) { build_reader_with(folha_feed.url, 'spec/html/folha.html') }
+  let(:bbc_reader) { build_reader_with(bbc_feed.url, 'spec/html/bbc.html') }
 
   context "fetching news from http://g1.globo.com" do
     it "should fetch highlights news" do
@@ -73,6 +92,28 @@ describe Reader do
 
       highlights[2].url.should == 'http://noticias.terra.com.br/mundo/noticias/0,,OI6133652-EI294,00-Pesquisa+revela+utilidade+de+do+DNA+que+era+visto+como+lixo.html'
       highlights[2].title.should == 'Pesquisa revela utilidade de 99% do DNA que era visto como "lixo"'
+    end
+  end
+
+  context "fetching news from http://www1.folha.uol.com.br/emcimadahora/" do
+    it "should fetch highlights news" do
+      highlights = folha_feed.fetch(folha_reader)
+      highlights.should_not be_empty
+      highlights[0].date.should == '18h56'
+      highlights[0].url.should == 'http://www1.folha.uol.com.br/mundo/1150652-al-qaeda-reivindica-131-ataques-no-iraque-durante-o-ramada.shtml'
+      highlights[0].title.should == 'Mundo'
+      highlights[0].subtitle.should == 'Al Qaeda reivindica 131 ataques no Iraque durante o Ramada'
+    end
+  end
+
+  context "fetching news from http://www.bbc.co.uk/portuguese/ultimas_noticias/" do
+    it "should fetch highlights news" do
+      highlights = bbc_feed.fetch(bbc_reader)
+      highlights.should_not be_empty
+      highlights[0].date.should == '8 setembro, 2012'
+      highlights[0].url.should == 'http://www.bbc.co.uk/portuguese/ultimas_noticias/2012/09/120908_aberto_tenis_mau_tempo_lgb.shtml'
+      highlights[0].title.should == 'Mau tempo adia final feminina do Aberto de Tenis dos Estados Unidos'
+      highlights[0].subtitle.should == 'A americana Serena Williams e a bielorrussa Victoria Azarenka se enfrentarao no domingo (9).'
     end
   end
 private

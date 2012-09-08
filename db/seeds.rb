@@ -32,3 +32,12 @@ Feed.create(
               subtitle: '',
               image_source: '',
               date_tag: '')
+Feed.create(
+              url: 'http://www.bbc.co.uk/portuguese/ultimas_noticias/',
+              host: 'http://www.bbc.co.uk/',
+              selector: '.content li.ts-headline',
+              url_pattern: 'a',
+              title: 'a',
+              subtitle: '.summary',
+              image_source: '',
+              date_tag: '.date')
