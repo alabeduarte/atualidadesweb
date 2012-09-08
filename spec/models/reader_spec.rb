@@ -2,21 +2,36 @@ require 'spec_helper'
 
 describe Reader do
   let(:selector) { Nokogiri::HTML }
-  let(:g1) { build_reader_with('http://g1.globo.com', 'spec/html/g1.html') }
-  let(:metro1) { build_reader_with('http://www.metro1.com.br/portal/?varSession=noticia&varEditoria=cidade', 'spec/html/metro1_cidade.html') }
-  let(:terra) { build_reader_with('http://noticias.terra.com.br/ultimasnoticias/0,,EI188,00.html', 'spec/html/terra.html') }
+  let(:g1_feed) { Feed.new(
+                          url: 'http://g1.globo.com',
+                          selector: '#glb-corpo .glb-area .chamada-principal',
+                          url_pattern: 'a',
+                          title: '.chapeu',
+                          subtitle: '.subtitulo',
+                          image_source: '.foto a img') }
+  let(:uol_feed) { Feed.new(
+                          url: 'http://noticias.terra.com.br/ultimasnoticias/0,,EI188,00.html',
+                          selector: 'div.geral section article.news',
+                          url_pattern: 'h1 a',
+                          title: 'h1 a span',
+                          subtitle: 'p',
+                          image_source: 'h1 a img',
+                          date_tag: 'time') }
+  let(:terra_feed) { Feed.new(
+                          url: 'http://noticias.uol.com.br/noticias/',
+                          selector: 'div.articles li',
+                          url_pattern: 'a',
+                          title: 'strong',
+                          subtitle: '',
+                          image_source: '',
+                          date_tag: '') }
+  let(:g1_reader) { build_reader_with(g1_feed.url, 'spec/html/g1.html') }
+  let(:uol_reader) { build_reader_with(uol_feed.url, 'spec/html/uol.html') }
+  let(:terra_reader) { build_reader_with(terra_feed.url, 'spec/html/terra.html') }
 
   context "fetching news from http://g1.globo.com" do
     it "should fetch highlights news" do
-      feed = Feed.new(
-                      url: g1.url,
-                      selector: '#glb-corpo .glb-area .chamada-principal',
-                      url_pattern: 'a',
-                      title: '.chapeu',
-                      subtitle: '.subtitulo',
-                      image_source: '.foto a img')
-
-      highlights = feed.fetch(g1)
+      highlights = g1_feed.fetch(g1_reader)
       highlights.should_not be_empty
       highlights[0].url.should == 'http://g1.globo.com/mundo/noticia/2012/08/ira-encerra-resgate-apos-terremotos-e-revisa-mortos-para-227-diz-tv-estatal.html'
       highlights[0].subtitle.should == 'Tremores deixaram 1.380 pessoas feridas.'
@@ -29,33 +44,26 @@ describe Reader do
     end
   end
 
-  it "should fetch highlights from http://www.metro1.com.br" do
-    feed = Feed.new(
-                    url: metro1.url,
-                    host: 'http://www.metro1.com.br',
-                    selector: '#lista-de-resultados .resultado',
-                    url_pattern: 'a',
-                    title: '.resultado-titulo',
-                    subtitle: '.resultado-texto',
-                    image_source: 'a img.img-resultado',
-                    date_tag: '.resultado-data')
+  context "fetching news from http://noticias.uol.com.br/noticias" do
+    it "should fetch highlights news" do
+      highlights = uol_feed.fetch(uol_reader)
+      highlights.should_not be_empty
+      highlights[0].date.should == '08/0918h32'
+      highlights[0].url.should == 'http://esporte.uol.com.br/ultimas-noticias/reuters/2012/09/08/jackie-stewart-aconselha-hamilton-a-continuar-na-mclaren.htm'
+      highlights[0].title.should == 'Jackie Stewart aconselha Hamilton a continuar na McLaren'
+      highlights[0].subtitle.should == 'MONZA, 8 Set (Reuters) - Tricampeao de Formula 1, Jackie Stewart aconselhou Lewis Hamilton neste sabado a...'
 
-    highlights = feed.fetch(metro1)
-    highlights.should_not be_empty
+      highlights[1].date.should == '08/0918h28'
+      highlights[1].url.should == 'http://cinema.uol.com.br/ultnot/afp/2012/09/08/vencedor-do-festival-de-veneza-diz-que-seu-flime-e-metafora-do-capitalismo-extremo.jhtm'
+      highlights[1].image.should == 'http://imguol.com/2012/09/08/diretor-sul-coreano-kim-ki-duk-exibe-o-leao-de-ouro-conquistado-no-festival-de-veneza-pelo-filme-pieta-8912-1347132275894_142x100.jpg'
+      highlights[1].title.should == 'Vencedor do Festival de Veneza diz que seu flime e "metafora do capitalismo extremo"'
+      highlights[1].subtitle.should == 'O cinema de autor, poetico e cruel, triunfou este sabado (8) na 69 Mostra de Veneza, com o Leao de Ouro sendo dado ao...'
+    end
   end
 
   context "fetching news from http://noticias.terra.com.br" do
     it "should fetch highlights news" do
-      feed = Feed.new(
-                      url: terra.url,
-                      selector: 'div.articles li',
-                      url_pattern: 'a',
-                      title: 'strong',
-                      subtitle: '',
-                      image_source: '',
-                      date_tag: '')
-
-      highlights = feed.fetch(terra)
+      highlights = terra_feed.fetch(terra_reader)
       highlights.should_not be_empty
       highlights[0].url.should == 'http://noticias.terra.com.br/eleicoes/2012/rj/rio-de-janeiro/noticias/0,,OI6133651-EI20647,00-Maia+descarta+rejeicao+tenho+que+crescer+onde+tenho+chances.html'
       highlights[0].title.should == 'Maia descarta rejeicao: "tenho que crescer onde tenho chances"'
