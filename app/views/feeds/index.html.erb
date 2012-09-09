@@ -2,6 +2,7 @@
 
 <table>
   <tr>
+    <th>Destaque Level</th>
     <th>Url</th>
     <th>Selector</th>
     <th>Url pattern</th>
@@ -17,6 +18,7 @@
 
 <% @feeds.each do |feed| %>
   <tr>
+    <td><%= feed.featured_level %></td>
     <td><%= feed.url %></td>
     <td><%= feed.selector %></td>
     <td><%= feed.url_pattern %></td>
