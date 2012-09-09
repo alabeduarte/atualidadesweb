@@ -15,7 +15,6 @@ ul {
   list-style: none;
 }
 
-
 .logo {
   margin: 0 auto;
   height: 100px;
@@ -60,8 +59,8 @@ a:hover {
 .breaking-news {
   display: none;
   float: left;
-  width: 27%;
-  opacity: 0.5;
+  /*  width: 27%;*/
+  /*  opacity: 0.5;*/
   /* border */
   -webkit-border-radius: 12px;
   -moz-border-radius: 12px;
@@ -74,11 +73,22 @@ a:hover {
 
 .breaking-news.visible {
   display: block;
+  float: left;
 }
 
 .breaking-news ul li {
+  display: inline;
+  float: left;
   padding: 20px;
   height: 100%;
+
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+
+  -webkit-box-shadow: 0 3px 10px #888;
+  -moz-box-shadow: 0 3px 10px #888;
+  box-shadow: 0 3px 10px #888;
 }
 
 .main {

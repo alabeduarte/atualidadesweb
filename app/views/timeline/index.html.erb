@@ -7,12 +7,12 @@
             <img class="image-news" src="<%= n.image %>">
           <% end %>
           <% if n.title %>
-            <span class="title-news"><%= n.title %></span>
+            <p class="title-news"><%= n.title %></p>
           <% end %>
           <% if n.subtitle && n.subtitle != n.title %>
-            <span class="title-news"><%= n.subtitle %></span>
+            <p class="title-news"><%= n.subtitle %></p>
           <% else %>
-            <span class="subtitle-news"><%= n.subtitle %></span>
+            <p class="subtitle-news"><%= n.subtitle %></p>
           <% end %>
         </a>
       </li>

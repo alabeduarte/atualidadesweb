@@ -1,4 +1,5 @@
 require 'cache'
+require 'news'
 class Timeline
 
   def initialize(repository)

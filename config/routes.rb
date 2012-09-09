@@ -2,7 +2,7 @@ Pontodevista::Application.routes.draw do
 
   resources :feeds, :timeline
 
-  root :to => 'welcome#index'
+  root :to => 'timeline#index'
   get "welcome/index"
 
   controller :welcome do

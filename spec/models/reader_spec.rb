@@ -141,6 +141,20 @@ describe Reader do
       highlights[0].subtitle.should == 'Artesa de Uberaba, MG, transforma folhas em pecas de decoracao'
     end
   end
+  it "should fetch highlights with limit" do
+    limit_news = 5
+    feed = Feed.new(
+                    url: 'http://g1.globo.com',
+                    selector: '#glb-corpo .glb-area .chamada-principal',
+                    url_pattern: 'a',
+                    title: '.chapeu',
+                    subtitle: '.subtitulo',
+                    image_source: '.foto a img',
+                    limit: limit_news)
+    reader = build_reader_with(feed.url, 'spec/html/g1.html')
+    highlights = feed.fetch(reader)
+    highlights.size.should == limit_news
+  end
 private
   def build_reader_with(host, html)
     Reader.new(host, parse(html))
