@@ -16,7 +16,7 @@ class Timeline
     @feeds.each do |f|
       workers << Thread.new { news.concat fetch_news(f, reader) }
     end
-    workers.each {|w| w.join }
+    workers.each(&:join)
     return news
   end
 
