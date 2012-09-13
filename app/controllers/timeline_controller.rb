@@ -2,7 +2,7 @@ class TimelineController < ApplicationController
   respond_to :html
   def index
     timeline = Timeline.new(Feed)
-    @news = timeline.all_cached(Reader)
+    @news = timeline.load(Reader)
     respond_with(@news)
   end
 end

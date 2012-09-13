@@ -6,7 +6,7 @@ class Timeline
     @feeds = repository.all
   end
 
-  def all_cached(reader)
+  def load(reader)
     Cache.fetch(key: 'timeline.all') { all(reader) }
   end
 
