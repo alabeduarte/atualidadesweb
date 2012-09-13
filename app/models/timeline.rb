@@ -12,7 +12,11 @@ class Timeline
 
   def all(reader)
     news = []
-    @feeds.each {|f| news.concat fetch_news(f, reader) }
+    workers = []
+    @feeds.each do |f|
+      workers << Thread.new { news.concat fetch_news(f, reader) }
+    end
+    workers.each {|w| w.join }
     return news
   end
 
