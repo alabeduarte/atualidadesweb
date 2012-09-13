@@ -5,22 +5,8 @@ body {
   font-size: 14px;
   font-family: "Helvetica Neue",Arial,sans-serif;
   background-color: #000;
-  /*background: url(../../assets/low_contrast_linen.png);*/
   background: transparent url(../../assets/extra_clean_paper.png);
   font-size:100%;
-}
-
-.logo {
-  margin: 0 auto;
-  height: 100px;
-  width: 637px;
-  background-color: #FFF;
-  background: url(../../assets/logo.png);
-
-  /* border */
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  border-radius: 12px;
 }
 
 a, a:visited {
@@ -28,46 +14,9 @@ a, a:visited {
   color: #888;
 }
 
-a:hover {
-  color: #B22;
-  text-decoration: underline;
-}
-
-#content {
-  background-color: #FFF;
-  background: transparent url(../../assets/extra_clean_paper.png);
-  margin: 0 auto;
-  margin-bottom: 0px;
-  padding: 0px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  position: relative;
-  width: 80%;
-  height: 100%;
-  min-height: 100%
-  min-width: 953px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  border-radius: 8px;
-}
-
 .breaking-news {
   display: none;
   float: left;
-  width: 27%;
-  opacity: 0.5;
-  /* border */
-  -webkit-border-radius: 12px;
-  -moz-border-radius: 12px;
-  border-radius: 12px;
-
-  -webkit-box-shadow: 0 3px 10px #888;
-  -moz-box-shadow: 0 3px 10px #888;
-  box-shadow: 0 3px 10px #888;
-}
-
-.breaking-news.visible {
-  display: block;
 }
 
 .breaking-news ul {
@@ -134,12 +83,6 @@ img.image-news {
   max-height: 124px;
 }
 
-img.image-news:hover {
-  -webkit-box-shadow: 0 3px 10px #B22;
-  -moz-box-shadow: 0 3px 10px #B22;
-  box-shadow: 0 3px 10px #B22;
-}
-
 
 /* aplica somente a partir de 320px */
 @media screen and (min-width: 320px) {
@@ -151,12 +94,6 @@ img.image-news:hover {
 
   #content {
     width: 96%;
-  }
-
-  .logo {
-    background: transparent;
-    height: 0px;
-    width: 0px;
   }
 
   .breaking-news {
