@@ -69,7 +69,8 @@ describe FeedsController do
       it "re-renders the 'new' template" do
         Feed.stub(:new) { mock_feed(:save => false) }
         post :create, :feed => {}
-        response.should render_template("new")
+        response.should redirect_to(feed_url(mock_feed))
+        # response.should render_template("new")
       end
     end
   end
@@ -105,7 +106,8 @@ describe FeedsController do
       it "re-renders the 'edit' template" do
         Feed.stub(:find) { mock_feed(:update_attributes => false) }
         put :update, :id => "1"
-        response.should render_template("edit")
+        response.should redirect_to(feed_url(mock_feed))
+        # response.should render_template("edit")
       end
     end
   end

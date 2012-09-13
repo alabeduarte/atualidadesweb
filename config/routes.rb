@@ -3,14 +3,6 @@ Atualidadesweb::Application.routes.draw do
   resources :feeds, :timeline
 
   root :to => 'timeline#index'
-  get "welcome/index"
-
-  controller :welcome do
-    get "g1_news", :g1_news
-    get "g1_bahia_news", :g1_bahia_news
-    get "atarde_news", :atarde_news
-    get "metro1_news", :metro1_news
-  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
