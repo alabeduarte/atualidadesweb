@@ -10,6 +10,7 @@ gem "mongo_mapper", github: "jnunemaker/mongomapper" # pretty much same as you
 gem 'cancan'
 gem 'nokogiri'
 gem 'thin'
+gem 'heroku'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -5,7 +5,8 @@ body {
   font-size: 14px;
   font-family: "Helvetica Neue",Arial,sans-serif;
   background-color: #000;
-  background: url(../../assets/low_contrast_linen.png);
+  /*background: url(../../assets/low_contrast_linen.png);*/
+  background: transparent url(../../assets/extra_clean_paper.png);
   font-size:100%;
 }
 
