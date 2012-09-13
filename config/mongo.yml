@@ -4,11 +4,11 @@ defaults: &defaults
 
 development:
   <<: *defaults
-  database: pontodevista_development
+  database: atualidadesweb_development
 
 test:
   <<: *defaults
-  database: pontodevista_test
+  database: atualidadesweb_test
 
 # set these environment variables on your prod server
 production:

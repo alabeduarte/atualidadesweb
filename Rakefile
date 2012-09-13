@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Pontodevista::Application.load_tasks
+Atualidadesweb::Application.load_tasks

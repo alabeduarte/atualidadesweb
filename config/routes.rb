@@ -1,4 +1,4 @@
-Pontodevista::Application.routes.draw do
+Atualidadesweb::Application.routes.draw do
 
   resources :feeds, :timeline
 
