@@ -1,6 +1,10 @@
 Atualidadesweb::Application.routes.draw do
 
-  resources :feeds, :timeline
+  resources :timeline
+
+  namespace :admin do
+    resources :feeds
+  end
 
   root :to => 'timeline#index'
 

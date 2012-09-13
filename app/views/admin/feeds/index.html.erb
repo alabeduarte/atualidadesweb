@@ -1,0 +1,27 @@
+<h1>Listing feeds</h1>
+
+<table>
+  <tr>
+    <th>Featured Level</th>
+    <th>Url</th>
+    <th>Selector</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @feeds.each do |feed| %>
+  <tr>
+    <td><%= feed.featured_level %></td>
+    <td><%= feed.url %></td>
+    <td><%= feed.selector %></td>
+    <td><%= link_to 'Show', admin_feed_path(feed) %></td>
+    <td><%= link_to 'Edit', edit_admin_feed_path(feed) %></td>
+    <td><%= link_to 'Destroy', admin_feed_path(feed), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New', new_admin_feed_path %>
