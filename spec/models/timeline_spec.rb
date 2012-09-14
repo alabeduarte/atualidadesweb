@@ -14,8 +14,8 @@ describe Timeline do
   end
 
   it "should retrieve all news from feeds to timeline" do
-    timeline = Timeline.new(repository)
-    news = timeline.all(reader)
+    timeline = Timeline.new
+    news = timeline.load(repository, reader)
     news.size.should == 16
   end
 
