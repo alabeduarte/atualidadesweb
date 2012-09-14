@@ -5,8 +5,7 @@ require 'news'
 class Timeline
 
   def load(repository, reader)
-    Cache.fetch(key: 'timeline.all') { NewsUpdater.new(repository, reader)
-.update }
+    Cache.fetch(key: 'timeline.all') { NewsUpdater.new(repository, reader).update }
   end
 
 end
