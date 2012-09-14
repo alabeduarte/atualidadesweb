@@ -5,7 +5,6 @@ describe Timeline do
   let(:reader) { mock(:reader) }
 
   before do
-    Rails.cache.clear
     feed_1 = create_feed(url: 'http://test1.com', with_total_news: 3)
     feed_2 = create_feed(url: 'http://test2.com', with_total_news: 6)
     feed_3 = create_feed(url: 'http://test3.com', with_total_news: 7)
