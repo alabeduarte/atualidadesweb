@@ -8,6 +8,7 @@ class Feed
   key :subtitle, String
   key :image_source, String
   key :date_tag, String
+  key :favicon, String
   key :host, String
   key :featured_level, Integer
   key :limit, Integer
