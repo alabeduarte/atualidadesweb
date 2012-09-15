@@ -7,7 +7,7 @@ gem 'bson_ext', '1.5.2'
 gem "mongo_mapper", github: "jnunemaker/mongomapper" # pretty much same as you
 # gem 'devise', '2.0.0'
 # gem 'mm-devise'
-gem 'cancan'
+# gem 'cancan'
 gem 'nokogiri'
 gem 'thin'
 gem 'heroku'
@@ -38,6 +38,7 @@ group :development, :test do
 end
 
 group :test do
+  gem 'simplecov', :require => false
   gem 'factory_girl_rails', '~> 1.7.0'
   # Pretty printed test output
   gem 'turn', '0.8.2', :require => false
