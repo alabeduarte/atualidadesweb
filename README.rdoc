@@ -1,4 +1,5 @@
 ==Atualidades|Web
-* Install Mongodb and...
+
+Install Mongodb and...
   rake db:setup
   rails server
