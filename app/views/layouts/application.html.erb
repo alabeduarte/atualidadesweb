@@ -3,15 +3,48 @@
 <head>
   <title>Atualidades|Web</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag 'style' %>
-  <%= stylesheet_link_tag 'mobile', :media => 'screen and (max-width: 320px)' %>
+  <%= stylesheet_link_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<!--[if lt IE 7]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+	
+	<div style="width: 800px; padding-top: 30px; margin: auto">
+        <nav class="navbar">
+            <div class="navbar-inner">   
+                <a class="brand" href="#">Notícias</a>
+                <ul class="nav">
+                  <li class="active"><a href="index.html">Início</a></li>
+                  <li><a href="#">Esportes</a></li>
+                  <li><a href="#">Mundo</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <div>
+            <div class="news-1"></div>
+            <div class="news-2"></div>
+            <div class="images"></div>
+        </div>
+
+    </div>
+	
     <%= yield %>
-    <%= javascript_include_tag "application", 'hiddenAddressBar' %>
+
     <script type="text/javascript">
         <%= yield :javascript %>
+    </script>
+
+
+	<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <!-- TODO:: adicionar o ID do Google Analytics -->
+    <script>
+        var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
     </script>
 </body>
 </html>
