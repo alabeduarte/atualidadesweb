@@ -7,6 +7,15 @@
 #               subtitle: 'a',
 #               image_source: '.foto a img')
 Feed.create(
+              url: 'http://www.globo.com/',
+              favicon: 'http://s.glbimg.com/en/ho/static/globocom/img/favicon.png',
+              host: 'http://www.globo.com/',
+              selector: '.glb-area-colunas .area .chamada-principal',
+              url_pattern: 'a',
+              title: '.conteudo p',
+              image_source: 'img',
+              featured_level: 0)
+Feed.create(
               url: 'http://g1.globo.com',
               favicon: 'http://s.glbimg.com/jo/g1/media/portal/img/logos/favicon.png',
               host: 'http://g1.globo.com',
