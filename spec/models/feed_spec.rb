@@ -87,4 +87,44 @@ describe Feed do
     end
   end
 
+  context "featured level" do
+    before do
+      Feed.create(
+                url: 'http://somenews.com/1',
+                selector: '#news',
+                url_pattern: 'a',
+                title: '.title',
+                subtitle: '.subtitle',
+                image_source: 'img',
+                host: 'http://somenews.com/1',
+                featured_level: 0,
+                date_tag: '.date')
+      Feed.create(
+                url: 'http://somenews.com/2',
+                selector: '#news',
+                url_pattern: 'a',
+                title: '.title',
+                subtitle: '.subtitle',
+                image_source: 'img',
+                host: 'http://somenews.com/2',
+                featured_level: 1,
+                date_tag: '.date')
+      Feed.create(
+                url: 'http://somenews.com/3',
+                selector: '#news',
+                url_pattern: 'a',
+                title: '.title',
+                subtitle: '.subtitle',
+                image_source: 'img',
+                host: 'http://somenews.com/3',
+                featured_level: 2,
+                date_tag: '.date')
+    end
+
+    it "should find all feeds by featured level" do
+      feeds = Feed.all(featured_level: 1)
+      feeds[0].url.should == 'http://somenews.com/2'
+    end
+  end
+
 end

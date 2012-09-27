@@ -6,6 +6,8 @@
 #               title: '.chapeu',
 #               subtitle: 'a',
 #               image_source: '.foto a img')
+
+# => featured feeds
 Feed.create(
               url: 'http://www.globo.com/',
               favicon: 'http://s.glbimg.com/en/ho/static/globocom/img/favicon.png',
@@ -14,7 +16,8 @@ Feed.create(
               url_pattern: 'a',
               title: '.conteudo p',
               image_source: 'img',
-              featured_level: 0)
+              featured_level: 0,
+              limit: 3)
 Feed.create(
               url: 'http://g1.globo.com',
               favicon: 'http://s.glbimg.com/jo/g1/media/portal/img/logos/favicon.png',
@@ -26,6 +29,30 @@ Feed.create(
               image_source: '.foto a img',
               featured_level: 0,
               limit: 3)
+Feed.create(
+              url: 'http://www.uol.com.br/',
+              favicon: 'http://home.img.uol.com.br/favicon.ico',
+              host: 'http://www.uol.com.br/',
+              selector: '.moduloChamada',
+              url_pattern: 'a',
+              title: 'a strong',
+              subtitle: 'a',
+              image_source: 'a img',
+              featured_level: 0,
+              limit: 3)
+Feed.create(
+              url: 'http://www.bbc.co.uk/portuguese/',
+              favicon: 'http://www.bbc.co.uk/favicon.ico',
+              host: 'http://www.bbc.co.uk/',
+              selector: '.teaser',
+              url_pattern: 'a',
+              title: 'a',
+              subtitle: '.summary',
+              image_source: 'a img',
+              featured_level: 0,
+              limit: 3)
+
+# => plain feeds
 Feed.create(
               url: 'http://g1.globo.com',
               favicon: 'http://s.glbimg.com/jo/g1/media/portal/img/logos/favicon.png',
@@ -47,18 +74,7 @@ Feed.create(
               subtitle: '.titulo',
               date_tag: '.item-noticia-hora',
               image_source: 'a.borda-interna img',
-              featured_level: 2,
-              limit: 5)
-Feed.create(
-              url: 'http://www.uol.com.br/',
-              favicon: 'http://home.img.uol.com.br/favicon.ico',
-              host: 'http://www.uol.com.br/',
-              selector: '.moduloChamada',
-              url_pattern: 'a',
-              title: 'a strong',
-              subtitle: 'a',
-              image_source: 'a img',
-              featured_level: 0,
+              featured_level: 1,
               limit: 3)
 Feed.create(
               url: 'http://noticias.uol.com.br/noticias/',
@@ -70,8 +86,8 @@ Feed.create(
               subtitle: 'p',
               image_source: 'h1 a img',
               date_tag: 'time',
-              featured_level: 2,
-              limit: 5)
+              featured_level: 1,
+              limit: 3)
 Feed.create(
               url: 'http://www1.folha.uol.com.br/emcimadahora/',
               favicon: 'http://f.i.uol.com.br/favicon.ico',
@@ -81,7 +97,7 @@ Feed.create(
               title: '.nlSection',
               subtitle: '.nlArticle a',
               date_tag: '.nlHour',
-              featured_level: 2,
+              featured_level: 1,
               limit: 8)
 Feed.create(
               url: 'http://noticias.terra.com.br/ultimasnoticias/0,,EI188,00.html',
@@ -92,18 +108,7 @@ Feed.create(
               subtitle: '',
               image_source: '',
               date_tag: '',
-              featured_level: 2,
-              limit: 5)
-Feed.create(
-              url: 'http://www.bbc.co.uk/portuguese/',
-              favicon: 'http://www.bbc.co.uk/favicon.ico',
-              host: 'http://www.bbc.co.uk/',
-              selector: '.teaser',
-              url_pattern: 'a',
-              title: 'a',
-              subtitle: '.summary',
-              image_source: 'a img',
-              featured_level: 0,
+              featured_level: 1,
               limit: 3)
 Feed.create(
               url: 'http://www.bbc.co.uk/portuguese/ultimas_noticias/',
@@ -115,5 +120,5 @@ Feed.create(
               subtitle: '.summary',
               image_source: '',
               date_tag: '.date',
-              featured_level: 2,
-              limit: 8)
+              featured_level: 1,
+              limit: 3)

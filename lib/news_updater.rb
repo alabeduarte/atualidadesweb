@@ -1,16 +1,15 @@
 require 'cache'
 class NewsUpdater
 
-  def initialize(repository, reader)
-    @feeds = repository.all
+  def initialize(reader)
     @reader = reader
   end
 
-  def update
-    return Cache.fetch(key: 'timeline.all') {
+  def update_by(key, feeds)
+    return Cache.fetch(key: key) {
       news = []
       workers = []
-      @feeds.each do |f|
+      feeds.each do |f|
         workers << Thread.new { news.concat fetch_news(f) }
       end
       workers.each(&:join)

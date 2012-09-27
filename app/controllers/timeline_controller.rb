@@ -1,8 +1,7 @@
 class TimelineController < ApplicationController
   respond_to :html
   def index
-    timeline = Timeline.new
-    @news = []#timeline.load(Feed, Reader)
-    respond_with(@news)
+    @timeline = Timeline.new(Feed, Reader)
+    respond_with(@timeline)
   end
 end
