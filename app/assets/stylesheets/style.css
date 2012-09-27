@@ -91,6 +91,7 @@ ul.news li {
 }
 
 .featured-title {
+  line-height: 23px;
   font-size: 21px;
   padding-top: 23px;
   padding-left: 7px;
