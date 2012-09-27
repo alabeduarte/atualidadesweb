@@ -16,6 +16,10 @@
     <%= f.text_field :favicon %>
   </div>
   <div class="field">
+    <%= f.label :featured_level %><br />
+    <%= f.number_field :featured_level, :type => "number" %>
+  </div>
+  <div class="field">
     <%= f.label :url %><br />
     <%= f.text_field :url %>
   </div>
