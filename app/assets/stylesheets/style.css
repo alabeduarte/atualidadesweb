@@ -73,12 +73,12 @@
 
 .news.center {
   font-size: 18px;
-  width: 35%;
+  width: 34%;
 }
 
 .news.images {
   font-size: 14px;
-  width: 25.9%;
+  width: 26.8%;
 }
 
 ul.news {
@@ -133,6 +133,25 @@ ul.news.center img {
 .middle-description {
   color: #838B8B;
   font-size: 12px;
+  padding-top: 10px;
+  padding-left: 18px;
+  padding-right: 18px;
+  padding-bottom: 18px;
+  /*text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;*/
+}
+
+ul.news.images img {
+  border: 1px solid #fff;
+  max-width: 200px;
+  max-height: 200px;
+  padding-left: 14px;
+}
+
+.img-description {
+  color: #838B8B;
+  font-size: 11px;
   padding-top: 10px;
   padding-left: 18px;
   padding-right: 18px;
