@@ -29,18 +29,29 @@ private
   def build_news_by(item, args)
     if (item)
       level = args[:featured_level]
-      href = find_link(item, args[:href], 'href')
       date = find_element(item, args[:date])
       title = find_element(item, args[:title])
       subtitle = find_element(item, args[:subtitle])
-      img = find_link(item, args[:img], 'src')
+      img = find_image(item, args)
+      href = find_link(item, args[:href], 'href')
+
       host = args[:host]
       if host
-        href = "#{host}/#{href}".gsub('../', '') if href && !href.include?('http')
-        image = "#{host}/#{image}".gsub('../', '') if image && image.include?('../')
+        href = "#{host}/#{href}".gsub('../', '') if href && !href.include?(host)
+        img = "#{host}/#{img}".gsub('../', '') if img && img.include?('../')
       end
+
+      # creating news
       News.new(url: href, date: date, title: title, subtitle: subtitle, image: img, featured_level: level)
     end
+  end
+
+  def find_image(item, options)
+    image = find_link(item, options[:img], 'src')
+    if (image && image.include?("==/"))
+      image = "http://#{image.split("==/").last}"
+    end
+    image
   end
 
   def find_link(item, element, src)
@@ -54,4 +65,5 @@ private
   def valid?(element)
     element && !element.empty?
   end
+
 end

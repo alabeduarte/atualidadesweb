@@ -83,10 +83,12 @@
 }
 
 ul.news {
+  overflow: auto;
   list-style: none;
 }
 
 ul.news li {
+  overflow: auto;
   line-height: 14px;
   padding: 10px;
 }

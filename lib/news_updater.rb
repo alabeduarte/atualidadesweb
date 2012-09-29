@@ -13,7 +13,7 @@ class NewsUpdater
         workers << Thread.new { news.concat fetch_news(f) }
       end
       workers.each(&:join)
-      return news
+      return news.shuffle
     }
   end
 
