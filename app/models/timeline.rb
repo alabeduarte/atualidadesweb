@@ -1,4 +1,3 @@
-require 'news_updater'
 class Timeline
 
   def initialize(repository, reader, news_updater=NewsUpdater.new(reader))

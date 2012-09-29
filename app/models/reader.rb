@@ -37,7 +37,7 @@ private
 
       host = args[:host]
       if host
-        href = "#{host}/#{href}".gsub('../', '') if href && !href.include?(host)
+        href = "#{host}/#{href}".gsub('../', '') if href && !href.include?('http')
         img = "#{host}/#{img}".gsub('../', '') if img && img.include?('../')
       end
 
