@@ -5,9 +5,11 @@
         <div class="featured-title">
           <%= n.title %>
         </div>
-        <div class="featured-img-border">
-          <img src="<%= n.image %>">
-        </div>
+        <% if n.image %>
+          <div class="featured-img-border">
+            <img src="<%= n.image %>">
+          </div>
+        <% end %>
         <div class="featured-description">
           <%= n.subtitle %>
         </div>
@@ -22,9 +24,11 @@
         <div class="middle-title">
           <%= n.title %>
         </div>
-        <div class="news-center-img-border">
-          <img src="<%= n.image %>">
-        </div>
+        <% if n.image %>
+          <div class="news-center-img-border">
+            <img src="<%= n.image %>">
+          </div>
+        <% end %>
         <div class="middle-description">
           <%= n.subtitle %>
         </div>
