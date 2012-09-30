@@ -6,7 +6,7 @@ class NewsUpdater
   end
 
   def update_by(key, feeds)
-    return Cache.fetch(key: key) {
+    Cache.fetch(key: key) {
       news = []
       workers = []
       feeds.each do |f|
