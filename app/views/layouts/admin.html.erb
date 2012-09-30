@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Atualidades|Web</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag 'application' %>
+  <%= csrf_meta_tags %>
+</head>
+  <body>
+	<!--[if lt IE 7]>
+        <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
+    <![endif]-->
+
+  	<div class="area">
+          <nav class="navbar">
+              <div class="navbar-inner">
+                  <a class="brand" href="#">Notícias</a>
+                  <ul class="nav">
+                    <li class="active"><a href="index.html">Início</a></li>
+                    <li><a href="#">Esportes</a></li>
+                    <li><a href="#">Mundo</a></li>
+                  </ul>
+              </div>
+          </nav>
+          <div class="separator"></div>
+          <%= yield %>
+    </div>
+    <script type="text/javascript">
+        <%= yield :javascript %>
+    </script>
+  </body>
+</html>

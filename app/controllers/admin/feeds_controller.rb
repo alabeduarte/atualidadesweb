@@ -1,4 +1,5 @@
 class Admin::FeedsController < ApplicationController
+  layout 'admin'
   respond_to :html, :json
 
   def index
@@ -8,6 +9,7 @@ class Admin::FeedsController < ApplicationController
 
   def show
     @feed = Feed.find(params[:id])
+    @response_time = Time.now
     @news = @feed.fetch(Reader.new(@feed.url))
     respond_with(:admin, @feed)
   end

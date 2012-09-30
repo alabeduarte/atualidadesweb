@@ -20,7 +20,8 @@ describe Reader do
                           title: '.chapeu',
                           subtitle: '.subtitulo',
                           image_source: '.foto a img',
-                          featured_level: 0) }
+                          featured_level: 0,
+                          limit: 3) }
   let(:uol_feed) { Feed.new(
                           url: 'http://noticias.terra.com.br/ultimasnoticias/0,,EI188,00.html',
                           selector: 'div.geral section article.news',
@@ -28,7 +29,9 @@ describe Reader do
                           title: 'h1 a span',
                           subtitle: 'p',
                           image_source: 'h1 a img',
-                          date_tag: 'time') }
+                          date_tag: 'time',
+                          featured_level: 0,
+                          limit: 3) }
   let(:terra_feed) { Feed.new(
                           url: 'http://noticias.uol.com.br/noticias/',
                           selector: 'div.articles li',
@@ -36,7 +39,9 @@ describe Reader do
                           title: 'strong',
                           subtitle: '',
                           image_source: '',
-                          date_tag: '') }
+                          date_tag: '',
+                          featured_level: 0,
+                          limit: 3) }
   let(:folha_feed) { Feed.new(
                           url: 'http://www1.folha.uol.com.br/emcimadahora/',
                           selector: '#newslist .nl2',
@@ -44,7 +49,9 @@ describe Reader do
                           title: '.nlSection',
                           subtitle: '.nlArticle a',
                           image_source: '',
-                          date_tag: '.nlHour') }
+                          date_tag: '.nlHour',
+                          featured_level: 0,
+                          limit: 3) }
   let(:bbc_feed) { Feed.new(
                           url: 'http://www.bbc.co.uk/portuguese/ultimas_noticias/',
                           host: 'http://www.bbc.co.uk',
@@ -53,7 +60,9 @@ describe Reader do
                           title: 'a',
                           subtitle: '.summary',
                           image_source: '',
-                          date_tag: '.date') }
+                          date_tag: '.date',
+                          featured_level: 0,
+                          limit: 3) }
   let(:g1_plantao_feed) { Feed.new(
                           url: 'http://g1.globo.com',
                           selector: '.lista-noticia-plantao li',
@@ -62,7 +71,8 @@ describe Reader do
                           subtitle: '.titulo',
                           date_tag: '.item-noticia-hora',
                           image_source: 'a.borda-interna img',
-                          featured_level: 1) }
+                          featured_level: 1,
+                          limit: 3) }
   let(:globo_reader) { build_reader_with(globo_feed.url, 'spec/html/globo.html') }
   let(:g1_reader) { build_reader_with(g1_feed.url, 'spec/html/g1.html') }
   let(:uol_reader) { build_reader_with(uol_feed.url, 'spec/html/uol.html') }

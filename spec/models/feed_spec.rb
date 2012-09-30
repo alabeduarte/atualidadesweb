@@ -9,10 +9,49 @@ describe Feed do
                         subtitle: '.subtitle',
                         image_source: 'img',
                         host: 'http://somenews.com',
-                        date_tag: '.date') }
+                        date_tag: '.date',
+                        featured_level: 0,
+                        limit: 5) }
   it "should save news feed" do
     feed.save
     feed.should_not be_nil
+  end
+
+  context "validations" do
+    context "url" do
+      it "when 'blabla' should not be valid" do
+        feed.url = 'blabla'
+        feed.should_not be_valid
+      end
+      it "when 'http://myhost.com' should be valid" do
+        feed.url = 'http://myhost.com'
+        feed.should be_valid
+      end
+      it "when 'http://www.myhost.com' should be valid" do
+        feed.url = 'http://www.myhost.com'
+        feed.should be_valid
+      end
+    end
+    context "featured level" do
+      it "when non numeric value should not be valid" do
+        feed.featured_level = 'teste'
+        feed.should_not be_valid
+      end
+      it "when numeric value should be valid" do
+        feed.featured_level = 0
+        feed.should be_valid
+      end
+    end
+    context "limit" do
+      it "when non numeric value should not be valid" do
+        feed.limit = 'teste'
+        feed.should_not be_valid
+      end
+      it "when numeric value should be valid" do
+        feed.limit = 10
+        feed.should be_valid
+      end
+    end
   end
 
   context "a news feed required fields" do
@@ -98,6 +137,7 @@ describe Feed do
                 image_source: 'img',
                 host: 'http://somenews.com/1',
                 featured_level: 0,
+                limit: 5,
                 date_tag: '.date')
       Feed.create(
                 url: 'http://somenews.com/2',
@@ -108,6 +148,7 @@ describe Feed do
                 image_source: 'img',
                 host: 'http://somenews.com/2',
                 featured_level: 1,
+                limit: 5,
                 date_tag: '.date')
       Feed.create(
                 url: 'http://somenews.com/3',
@@ -118,6 +159,7 @@ describe Feed do
                 image_source: 'img',
                 host: 'http://somenews.com/3',
                 featured_level: 2,
+                limit: 5,
                 date_tag: '.date')
     end
 

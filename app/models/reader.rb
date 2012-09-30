@@ -12,16 +12,8 @@ class Reader
 
   def highlights(args)
     news = Array.new
-    if (args[:limit])
-      limit = args[:limit]
-      @selector.css(args[:selector]).first(limit).each do |item|
-        news << build_news_by(item, args)
-      end
-    else
-      @selector.css(args[:selector]).each do |item|
-        news << build_news_by(item, args)
-      end
-    end
+    limit = args[:limit]
+    @selector.css(args[:selector]).first(limit).each {|item| news << build_news_by(item, args)}
     news
   end
 
