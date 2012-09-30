@@ -11,6 +11,7 @@ class Admin::FeedsController < ApplicationController
     @feed = Feed.find(params[:id])
     @response_time = Time.now
     @news = @feed.fetch(Reader.new(@feed.url))
+    @response_time = @response_time.sec
     respond_with(:admin, @feed)
   end
 
