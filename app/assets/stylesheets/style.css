@@ -21,8 +21,8 @@
   max-width: 940px;
   width: 940px;
   overflow: auto;
-  max-height: 600px;
-  margin-bottom: 5%;
+  height: 600px;
+  margin-bottom: 1%;
   /*  border: 1px solid green;*/
 }
 

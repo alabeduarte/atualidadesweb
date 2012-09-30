@@ -40,17 +40,6 @@ Feed.create(
               image_source: 'a img',
               featured_level: 1,
               limit: 3)
-Feed.create(
-              url: 'http://www.bbc.co.uk/portuguese/',
-              favicon: 'http://www.bbc.co.uk/favicon.ico',
-              host: 'http://www.bbc.co.uk/',
-              selector: '.teaser',
-              url_pattern: 'a',
-              title: 'a',
-              subtitle: '.summary',
-              image_source: 'a img',
-              featured_level: 1,
-              limit: 5)
 
 # => plain feeds
 Feed.create(
@@ -98,6 +87,7 @@ Feed.create(
               limit: 8)
 Feed.create(
               url: 'http://noticias.terra.com.br/ultimasnoticias/0,,EI188,00.html',
+              favicon: 'http://s1.trrsf.com.br/favicon.ico',
               host: 'http://terra.com.br/',
               selector: 'div.articles li',
               url_pattern: 'a',
@@ -107,13 +97,21 @@ Feed.create(
               featured_level: 1,
               limit: 8)
 Feed.create(
-              url: 'http://www.bbc.co.uk/portuguese/ultimas_noticias/',
+              url: 'http://www.bbc.co.uk/portuguese/',
               favicon: 'http://www.bbc.co.uk/favicon.ico',
               host: 'http://www.bbc.co.uk/',
-              selector: '.content li.ts-headline',
+              selector: '.content ul li',
               url_pattern: 'a',
               title: 'a',
-              subtitle: '.summary',
-              image_source: '',
+              image_source: 'img',
+              featured_level: 0,
+              limit: 15)
+Feed.create(
+              url: 'http://www.band.com.br/',
+              host: 'http://www.band.com.br/',
+              selector: '.materia',
+              url_pattern: 'a',
+              title: 'a',
+              image_source: 'img',
               featured_level: 1,
-              limit: 3)
+              limit: 15)
