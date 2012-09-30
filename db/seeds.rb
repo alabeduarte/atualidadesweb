@@ -17,7 +17,7 @@ Feed.create(
               title: '.conteudo p',
               image_source: 'img',
               featured_level: 0,
-              limit: 3)
+              limit: 10)
 Feed.create(
               url: 'http://g1.globo.com',
               favicon: 'http://s.glbimg.com/jo/g1/media/portal/img/logos/favicon.png',
@@ -28,7 +28,7 @@ Feed.create(
               subtitle: 'a',
               image_source: '.foto a img',
               featured_level: 0,
-              limit: 3)
+              limit: 8)
 Feed.create(
               url: 'http://www.uol.com.br/',
               favicon: 'http://home.img.uol.com.br/favicon.ico',
@@ -38,7 +38,7 @@ Feed.create(
               title: 'a strong',
               subtitle: 'a',
               image_source: 'a img',
-              featured_level: 0,
+              featured_level: 1,
               limit: 3)
 Feed.create(
               url: 'http://www.bbc.co.uk/portuguese/',
@@ -49,8 +49,8 @@ Feed.create(
               title: 'a',
               subtitle: '.summary',
               image_source: 'a img',
-              featured_level: 0,
-              limit: 3)
+              featured_level: 1,
+              limit: 5)
 
 # => plain feeds
 Feed.create(
@@ -63,7 +63,7 @@ Feed.create(
               subtitle: 'a',
               image_source: '.foto a img',
               featured_level: 1,
-              limit: 3)
+              limit: 5)
 Feed.create(
               url: 'http://g1.globo.com',
               favicon: 'http://s.glbimg.com/jo/g1/media/portal/img/logos/favicon.png',
@@ -72,10 +72,9 @@ Feed.create(
               url_pattern: 'a',
               title: '.chapeu',
               subtitle: '.titulo',
-              date_tag: '.item-noticia-hora',
               image_source: 'a.borda-interna img',
               featured_level: 1,
-              limit: 3)
+              limit: 6)
 Feed.create(
               url: 'http://noticias.uol.com.br/noticias/',
               favicon: 'http://home.img.uol.com.br/favicon.ico',
@@ -85,9 +84,8 @@ Feed.create(
               title: 'h1 a span',
               subtitle: 'p',
               image_source: 'h1 a img',
-              date_tag: 'time',
-              featured_level: 1,
-              limit: 3)
+              featured_level: 0,
+              limit: 6)
 Feed.create(
               url: 'http://www1.folha.uol.com.br/emcimadahora/',
               favicon: 'http://f.i.uol.com.br/favicon.ico',
@@ -96,7 +94,6 @@ Feed.create(
               url_pattern: '.nlArticle a',
               title: '.nlSection',
               subtitle: '.nlArticle a',
-              date_tag: '.nlHour',
               featured_level: 1,
               limit: 8)
 Feed.create(
@@ -107,9 +104,8 @@ Feed.create(
               title: 'strong',
               subtitle: '',
               image_source: '',
-              date_tag: '',
               featured_level: 1,
-              limit: 3)
+              limit: 8)
 Feed.create(
               url: 'http://www.bbc.co.uk/portuguese/ultimas_noticias/',
               favicon: 'http://www.bbc.co.uk/favicon.ico',
@@ -119,6 +115,5 @@ Feed.create(
               title: 'a',
               subtitle: '.summary',
               image_source: '',
-              date_tag: '.date',
               featured_level: 1,
               limit: 3)

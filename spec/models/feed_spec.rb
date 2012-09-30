@@ -9,7 +9,6 @@ describe Feed do
                         subtitle: '.subtitle',
                         image_source: 'img',
                         host: 'http://somenews.com',
-                        date_tag: '.date',
                         featured_level: 0,
                         limit: 5) }
   it "should save news feed" do
@@ -89,10 +88,6 @@ describe Feed do
       feed.image_source = nil
     end
 
-    it "date tag maybe empty" do
-      feed.date_tag = nil
-    end
-
     after do
       feed.should be_valid
     end
@@ -137,8 +132,7 @@ describe Feed do
                 image_source: 'img',
                 host: 'http://somenews.com/1',
                 featured_level: 0,
-                limit: 5,
-                date_tag: '.date')
+                limit: 5)
       Feed.create(
                 url: 'http://somenews.com/2',
                 selector: '#news',
@@ -148,8 +142,7 @@ describe Feed do
                 image_source: 'img',
                 host: 'http://somenews.com/2',
                 featured_level: 1,
-                limit: 5,
-                date_tag: '.date')
+                limit: 5)
       Feed.create(
                 url: 'http://somenews.com/3',
                 selector: '#news',
@@ -159,8 +152,7 @@ describe Feed do
                 image_source: 'img',
                 host: 'http://somenews.com/3',
                 featured_level: 2,
-                limit: 5,
-                date_tag: '.date')
+                limit: 5)
     end
 
     it "should find all feeds by featured level" do

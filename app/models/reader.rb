@@ -21,9 +21,8 @@ private
   def build_news_by(item, args)
     if (item)
       level = args[:featured_level]
-      date = find_element(item, args[:date])
-      title = find_element(item, args[:title])
-      subtitle = find_element(item, args[:subtitle])
+      title = find_text(item, args[:title])
+      subtitle = find_text(item, args[:subtitle])
       img = find_image(item, args)
       href = find_link(item, args[:href], 'href')
 
@@ -34,7 +33,7 @@ private
       end
 
       # creating news
-      News.new(url: href, date: date, title: title, subtitle: subtitle, image: img, featured_level: level)
+      News.new(url: href, title: title, subtitle: subtitle, image: img, featured_level: level)
     end
   end
 
@@ -50,7 +49,7 @@ private
     item.css(element).map { |doc| doc[src] }.first if valid?(element)
   end
 
-  def find_element(item, element)
+  def find_text(item, element)
     item.css(element).text if valid?(element)
   end
 

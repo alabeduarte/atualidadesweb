@@ -29,7 +29,6 @@ describe Reader do
                           title: 'h1 a span',
                           subtitle: 'p',
                           image_source: 'h1 a img',
-                          date_tag: 'time',
                           featured_level: 0,
                           limit: 3) }
   let(:terra_feed) { Feed.new(
@@ -39,7 +38,6 @@ describe Reader do
                           title: 'strong',
                           subtitle: '',
                           image_source: '',
-                          date_tag: '',
                           featured_level: 0,
                           limit: 3) }
   let(:folha_feed) { Feed.new(
@@ -49,7 +47,6 @@ describe Reader do
                           title: '.nlSection',
                           subtitle: '.nlArticle a',
                           image_source: '',
-                          date_tag: '.nlHour',
                           featured_level: 0,
                           limit: 3) }
   let(:bbc_feed) { Feed.new(
@@ -60,7 +57,6 @@ describe Reader do
                           title: 'a',
                           subtitle: '.summary',
                           image_source: '',
-                          date_tag: '.date',
                           featured_level: 0,
                           limit: 3) }
   let(:g1_plantao_feed) { Feed.new(
@@ -69,7 +65,6 @@ describe Reader do
                           url_pattern: 'a',
                           title: '.chapeu',
                           subtitle: '.titulo',
-                          date_tag: '.item-noticia-hora',
                           image_source: 'a.borda-interna img',
                           featured_level: 1,
                           limit: 3) }
@@ -101,12 +96,10 @@ describe Reader do
     it "should fetch news" do
       news = uol_feed.fetch(uol_reader)
       news.should_not be_empty
-      news[0].date.should == '08/0918h32'
       news[0].url.should == 'http://esporte.uol.com.br/ultimas-noticias/reuters/2012/09/08/jackie-stewart-aconselha-hamilton-a-continuar-na-mclaren.htm'
       news[0].title.should == 'Jackie Stewart aconselha Hamilton a continuar na McLaren'
       news[0].subtitle.should == 'MONZA, 8 Set (Reuters) - Tricampeao de Formula 1, Jackie Stewart aconselhou Lewis Hamilton neste sabado a...'
 
-      news[1].date.should == '08/0918h28'
       news[1].url.should == 'http://cinema.uol.com.br/ultnot/afp/2012/09/08/vencedor-do-festival-de-veneza-diz-que-seu-flime-e-metafora-do-capitalismo-extremo.jhtm'
       news[1].image.should == 'http://imguol.com/2012/09/08/diretor-sul-coreano-kim-ki-duk-exibe-o-leao-de-ouro-conquistado-no-festival-de-veneza-pelo-filme-pieta-8912-1347132275894_142x100.jpg'
       news[1].title.should == 'Vencedor do Festival de Veneza diz que seu flime e "metafora do capitalismo extremo"'
@@ -133,7 +126,6 @@ describe Reader do
     it "should fetch news" do
       news = folha_feed.fetch(folha_reader)
       news.should_not be_empty
-      news[0].date.should == '18h56'
       news[0].url.should == 'http://www1.folha.uol.com.br/mundo/1150652-al-qaeda-reivindica-131-ataques-no-iraque-durante-o-ramada.shtml'
       news[0].title.should == 'Mundo'
       news[0].subtitle.should == 'Al Qaeda reivindica 131 ataques no Iraque durante o Ramada'
@@ -144,7 +136,6 @@ describe Reader do
     it "should fetch news" do
       news = bbc_feed.fetch(bbc_reader)
       news.should_not be_empty
-      news[0].date.should == '8 setembro, 2012'
       news[0].url.should == 'http://www.bbc.co.uk/portuguese/ultimas_noticias/2012/09/120908_aberto_tenis_mau_tempo_lgb.shtml'
       news[0].title.should == 'Mau tempo adia final feminina do Aberto de Tenis dos Estados Unidos'
       news[0].subtitle.should == 'A americana Serena Williams e a bielorrussa Victoria Azarenka se enfrentarao no domingo (9).'
@@ -156,7 +147,6 @@ describe Reader do
       news = g1_plantao_feed.fetch(g1_plantao_reader)
       news.should_not be_empty
       news[0].featured_level.should == 1
-      news[0].date.should == '19h47'
       news[0].url.should == 'http://g1.globo.com/minas-gerais/triangulo-mineiro/noticia/2012/09/artesa-de-uberaba-mg-transforma-folhas-em-pecas-de-decoracao.html'
       news[0].image.should == 'http://s2.glbimg.com/eqFijf37GQ7iGc3TFjjNA59TGhvbJhrKOwVcofvElikZFx_jY20C6579lkfZOxYd/s.glbimg.com/jo/g1/f/original/2012/09/08/folharte02.jpg'
       news[0].title.should == 'Triangulo Mineiro'

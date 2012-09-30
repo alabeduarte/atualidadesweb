@@ -7,7 +7,6 @@ class Feed
   key :title, String
   key :subtitle, String
   key :image_source, String
-  key :date_tag, String
   key :favicon, String
   key :host, String
   key :featured_level, Integer
@@ -24,7 +23,6 @@ class Feed
                       title: @title,
                       subtitle: @subtitle,
                       img: @image_source,
-                      date: @date_tag,
                       host: @host,
                       featured_level: @featured_level,
                       limit: @limit

@@ -36,11 +36,6 @@
 </p>
 
 <p>
-  <b>Date tag:</b>
-  <%= @feed.date_tag %>
-</p>
-
-<p>
   <b>Host:</b>
   <%= @feed.host %>
 </p>
@@ -54,7 +49,6 @@
     <% @news.each do |n| %>
       <li>
         <a href="<%= n.url %>" target="_blank">
-          <time><%= n.date %></time>
           <% if n.image %>
             <img class="image-news" src="<%= n.image %>">
           <% end %>
