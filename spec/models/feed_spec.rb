@@ -108,19 +108,6 @@ describe Feed do
     end
   end
 
-  context "fecthing news" do
-    let(:reader) { mock(:reader) }
-    before do
-      news = []
-      10.times {|n| news << mock(:news)}
-      reader.stub(:highlights).with(anything).and_return(news)
-    end
-    it "should fetch news from your url" do
-      reader.should_receive(:highlights).with(anything)
-      feed.fetch(reader).size.should == 10
-    end
-  end
-
   context "featured level" do
     before do
       Feed.create(

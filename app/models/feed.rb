@@ -16,17 +16,8 @@ class Feed
   validates :url, :host, :format => URI::regexp(%w(http https)), :presence => true
   validates :featured_level, :limit, :numericality => true, :presence => true
 
-  def fetch(reader)
-    reader.highlights(
-                      selector: @selector,
-                      href: @url_pattern,
-                      title: @title,
-                      subtitle: @subtitle,
-                      img: @image_source,
-                      host: @host,
-                      featured_level: @featured_level,
-                      limit: @limit
-                      )
+  def news(reader=Reader.new(self))
+    reader.news
   end
 
 end

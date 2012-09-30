@@ -4,41 +4,40 @@ class Reader
 
   attr_reader :title, :selector, :url
 
-  def initialize(url, selector=Nokogiri::HTML(open(url)))
-    @url = url
+  def initialize(feed, selector=Nokogiri::HTML(open(feed.url)))
+    @feed = feed
     @selector = selector
     @title = @selector.at_css("title").text
   end
 
-  def highlights(args)
-    news = Array.new
-    limit = args[:limit]
-    @selector.css(args[:selector]).first(limit).each {|item| news << build_news_by(item, args)}
+  def news
+    news = []
+    limit = @feed.limit
+    @selector.css(@feed.selector).first(limit).each {|item| news << build_news_by(item)}
     news
   end
 
 private
-  def build_news_by(item, args)
+  def build_news_by(item)
     if (item)
-      level = args[:featured_level]
-      title = find_text(item, args[:title])
-      subtitle = find_text(item, args[:subtitle])
-      img = find_image(item, args)
-      href = find_link(item, args[:href], 'href')
+      level = @feed.featured_level
+      title = find_text(item, @feed.title)
+      subtitle = find_text(item, @feed.subtitle)
+      img = find_image(item, @feed.image_source)
+      href = find_link(item, @feed.url_pattern, 'href')
 
-      host = args[:host]
-      if host
-        href = "#{host}/#{href}".gsub('../', '') if href && !href.include?('http')
-        img = "#{host}/#{img}".gsub('../', '') if img && img.include?('../')
+      if @feed.host
+        href = "#{@feed.host}/#{href}".gsub('../', '') if href && !href.include?('http')
+        img = "#{@feed.host}/#{img}".gsub('../', '') if img && img.include?('../')
       end
 
       # creating news
-      News.new(url: href, title: title, subtitle: subtitle, image: img, featured_level: level)
+      News.new(feed: @feed, url: href, title: title, subtitle: subtitle, image: img, featured_level: level)
     end
   end
 
-  def find_image(item, options)
-    image = find_link(item, options[:img], 'src')
+  def find_image(item, image_source)
+    image = find_link(item, image_source, 'src')
     if (image && image.include?("==/"))
       image = "http://#{image.split("==/").last}"
     end

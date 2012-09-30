@@ -68,17 +68,21 @@ describe Reader do
                           image_source: 'a.borda-interna img',
                           featured_level: 1,
                           limit: 3) }
-  let(:globo_reader) { build_reader_with(globo_feed.url, 'spec/html/globo.html') }
-  let(:g1_reader) { build_reader_with(g1_feed.url, 'spec/html/g1.html') }
-  let(:uol_reader) { build_reader_with(uol_feed.url, 'spec/html/uol.html') }
-  let(:terra_reader) { build_reader_with(terra_feed.url, 'spec/html/terra.html') }
-  let(:folha_reader) { build_reader_with(folha_feed.url, 'spec/html/folha.html') }
-  let(:bbc_reader) { build_reader_with(bbc_feed.url, 'spec/html/bbc.html') }
-  let(:g1_plantao_reader) { build_reader_with(g1_plantao_feed.url, 'spec/html/g1_plantao.html') }
+  let(:globo_reader) { build_reader_with(globo_feed, 'spec/html/globo.html') }
+  let(:g1_reader) { build_reader_with(g1_feed, 'spec/html/g1.html') }
+  let(:uol_reader) { build_reader_with(uol_feed, 'spec/html/uol.html') }
+  let(:terra_reader) { build_reader_with(terra_feed, 'spec/html/terra.html') }
+  let(:folha_reader) { build_reader_with(folha_feed, 'spec/html/folha.html') }
+  let(:bbc_reader) { build_reader_with(bbc_feed, 'spec/html/bbc.html') }
+  let(:g1_plantao_reader) { build_reader_with(g1_plantao_feed, 'spec/html/g1_plantao.html') }
+
+  before(:each) do
+    Rails.cache.clear
+  end
 
   context "fetching news from http://g1.globo.com" do
     it "should fetch news" do
-      news = g1_feed.fetch(g1_reader)
+      news = fetch(g1_reader, g1_feed)
       news.should_not be_empty
       news[0].featured_level.should == 0
       news[0].url.should == 'http://g1.globo.com/mundo/noticia/2012/08/ira-encerra-resgate-apos-terremotos-e-revisa-mortos-para-227-diz-tv-estatal.html'
@@ -94,7 +98,7 @@ describe Reader do
 
   context "fetching news from http://noticias.uol.com.br/noticias" do
     it "should fetch news" do
-      news = uol_feed.fetch(uol_reader)
+      news = fetch(uol_reader, uol_feed)
       news.should_not be_empty
       news[0].url.should == 'http://esporte.uol.com.br/ultimas-noticias/reuters/2012/09/08/jackie-stewart-aconselha-hamilton-a-continuar-na-mclaren.htm'
       news[0].title.should == 'Jackie Stewart aconselha Hamilton a continuar na McLaren'
@@ -109,7 +113,7 @@ describe Reader do
 
   context "fetching news from http://noticias.terra.com.br" do
     it "should fetch news" do
-      news = terra_feed.fetch(terra_reader)
+      news = fetch(terra_reader, terra_feed)
       news.should_not be_empty
       news[0].url.should == 'http://noticias.terra.com.br/eleicoes/2012/rj/rio-de-janeiro/noticias/0,,OI6133651-EI20647,00-Maia+descarta+rejeicao+tenho+que+crescer+onde+tenho+chances.html'
       news[0].title.should == 'Maia descarta rejeicao: "tenho que crescer onde tenho chances"'
@@ -124,7 +128,7 @@ describe Reader do
 
   context "fetching news from http://www1.folha.uol.com.br/emcimadahora/" do
     it "should fetch news" do
-      news = folha_feed.fetch(folha_reader)
+      news = fetch(folha_reader, folha_feed)
       news.should_not be_empty
       news[0].url.should == 'http://www1.folha.uol.com.br/mundo/1150652-al-qaeda-reivindica-131-ataques-no-iraque-durante-o-ramada.shtml'
       news[0].title.should == 'Mundo'
@@ -134,7 +138,7 @@ describe Reader do
 
   context "fetching news from http://www.bbc.co.uk/portuguese/ultimas_noticias/" do
     it "should fetch news" do
-      news = bbc_feed.fetch(bbc_reader)
+      news = fetch(bbc_reader, bbc_feed)
       news.should_not be_empty
       news[0].url.should == 'http://www.bbc.co.uk/portuguese/ultimas_noticias/2012/09/120908_aberto_tenis_mau_tempo_lgb.shtml'
       news[0].title.should == 'Mau tempo adia final feminina do Aberto de Tenis dos Estados Unidos'
@@ -144,7 +148,7 @@ describe Reader do
 
   context "fetching news from 'plantao' of http://g1.globo.com" do
     it "should fetch news" do
-      news = g1_plantao_feed.fetch(g1_plantao_reader)
+      news = fetch(g1_plantao_reader, g1_plantao_feed)
       news.should_not be_empty
       news[0].featured_level.should == 1
       news[0].url.should == 'http://g1.globo.com/minas-gerais/triangulo-mineiro/noticia/2012/09/artesa-de-uberaba-mg-transforma-folhas-em-pecas-de-decoracao.html'
@@ -154,7 +158,7 @@ describe Reader do
     end
   end
   it "should fetch news with limit" do
-    limit_news = 5
+    limit_news = 1
     feed = Feed.new(
                     url: 'http://g1.globo.com',
                     selector: '#glb-corpo .glb-area .chamada-principal',
@@ -163,19 +167,29 @@ describe Reader do
                     subtitle: '.subtitulo',
                     image_source: '.foto a img',
                     limit: limit_news)
-    reader = build_reader_with(feed.url, 'spec/html/g1.html')
-    news = feed.fetch(reader)
+    reader = build_reader_with(feed, 'spec/html/g1.html')
+    news = fetch(reader, feed)
     news.size.should == limit_news
   end
 
   it "should fetch high quality images from globo.com" do
-    news = globo_feed.fetch(globo_reader)
+    news = fetch(globo_reader, globo_feed)
     news.should_not be_empty
     news[0].image.should == "http://s.glbimg.com/en/ho/f/original/2012/09/29/exobeso.jpg"
   end
+
+  it "should fetch feed source to news" do
+    news = fetch(globo_reader, globo_feed)
+    news[0].feed.url == "http://www.globo.com/"
+  end
+
 private
-  def build_reader_with(host, html)
-    Reader.new(host, parse(html))
+  def fetch(reader, feed)
+    feed.news(reader)
+  end
+
+  def build_reader_with(feed, html)
+    Reader.new(feed, parse(html))
   end
   def parse(path)
     selector.parse(File.read(path))
