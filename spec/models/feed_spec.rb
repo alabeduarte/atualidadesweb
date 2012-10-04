@@ -11,140 +11,138 @@ describe Feed do
                         host: 'http://somenews.com',
                         featured_level: 0,
                         limit: 5) }
-  it "should save news feed" do
-    feed.save
-    feed.should_not be_nil
+  describe "#save" do
+    it {feed.save.should be_true}
   end
 
-  context "validations" do
-    context "url" do
-      it "when 'blabla' should not be valid" do
-        feed.url = 'blabla'
-        feed.should_not be_valid
+  describe "validations" do
+    shared_examples_for "feed valid" do
+      it {feed.should be_valid}
+    end
+
+    shared_examples_for "feed invalid" do
+      it {feed.should_not be_valid}
+    end
+
+    describe "#url" do
+      context "when it is empty" do
+        before {feed.url = nil}
+        it_behaves_like "feed invalid"
       end
-      it "when 'http://myhost.com' should be valid" do
-        feed.url = 'http://myhost.com'
-        feed.should be_valid
+
+      context "when address without 'www'" do
+        before {feed.url = 'http://myhost.com'}
+        it_behaves_like "feed valid"
       end
-      it "when 'http://www.myhost.com' should be valid" do
-        feed.url = 'http://www.myhost.com'
-        feed.should be_valid
+
+      context "when address with 'www'" do
+        before {feed.url = 'http://www.myhost.com'}
+        it_behaves_like "feed valid"
+      end
+
+      context "when address is plain text" do
+        before {feed.url = 'blabla'}
+        it_behaves_like "feed invalid"
       end
     end
-    context "featured level" do
-      it "when non numeric value should not be valid" do
-        feed.featured_level = 'teste'
-        feed.should_not be_valid
+
+    describe "#host" do
+      context "when it is empty" do
+        before {feed.host = nil}
+        it_behaves_like "feed invalid"
       end
-      it "when numeric value should be valid" do
-        feed.featured_level = 0
-        feed.should be_valid
+
+      context "when address without 'www'" do
+        before {feed.host = 'http://myhost.com'}
+        it_behaves_like "feed valid"
+      end
+
+      context "when address with 'www'" do
+        before {feed.host = 'http://www.myhost.com'}
+        it_behaves_like "feed valid"
+      end
+
+      context "when address is plain text" do
+        before {feed.host = 'blabla'}
+        it_behaves_like "feed invalid"
       end
     end
-    context "limit" do
-      it "when non numeric value should not be valid" do
-        feed.limit = 'teste'
-        feed.should_not be_valid
+
+    describe "#selector" do
+      context "when it is empty" do
+        before {feed.selector = nil}
+        it_behaves_like "feed invalid"
       end
-      it "when numeric value should be valid" do
-        feed.limit = 10
-        feed.should be_valid
+    end
+
+    describe "#url_pattern" do
+      context "when it is empty" do
+        before {feed.url_pattern = nil}
+        it_behaves_like "feed invalid"
+      end
+    end
+
+    describe "#title" do
+      context "when it is empty" do
+        before {feed.title = nil}
+        it_behaves_like "feed valid"
+      end
+    end
+
+    describe "#featured level" do
+      context "when it is empty" do
+        before {feed.featured_level = nil}
+        it_behaves_like "feed invalid"
+      end
+
+      context "when numeric value" do
+        before {feed.featured_level = 0}
+        it_behaves_like "feed valid"
+      end
+
+      context "when non numeric value" do
+        before {feed.featured_level = 'not a number'}
+        it_behaves_like "feed invalid"
+      end
+    end
+
+    describe "#limit" do
+      context "when it is empty" do
+        before {feed.limit = nil}
+        it_behaves_like "feed invalid"
+      end
+
+      context "when numeric value" do
+        before {feed.limit = 10}
+        it_behaves_like "feed valid"
+      end
+
+      context "when non numeric value" do
+        before {feed.limit = 'not a number'}
+        it_behaves_like "feed invalid"
+      end
+    end
+
+    describe "#subtitle" do
+      context "when it is empty" do
+        before {feed.subtitle = nil}
+        it_behaves_like "feed valid"
+      end
+    end
+
+    describe "#image_source" do
+      context "when it is empty" do
+        before {feed.image_source = nil}
+        it_behaves_like "feed valid"
       end
     end
   end
 
-  context "a news feed required fields" do
-    it "url should not be empty" do
-      feed.url = nil
-    end
-
-    it "host should not be empty" do
-      feed.host = nil
-    end
-
-    it "selector should not be empty" do
-      feed.selector = nil
-    end
-
-    it "url pattern should not be empty" do
-      feed.url_pattern = nil
-    end
-
-    it "title should not be empty" do
-      feed.title = nil
-    end
-
-    after do
-      feed.should_not be_valid
-    end
-  end
-
-  context "a news feed optional fields" do
-    it "subtitle maybe empty" do
-      feed.subtitle = nil
-    end
-
-    it "image source maybe empty" do
-      feed.image_source = nil
-    end
-
-    after do
-      feed.should be_valid
-    end
-  end
-
-  context "news feed url" do
-    it "when 'blabla' should not be valid" do
-      feed.url = 'blabla'
-      feed.should_not be_valid
-    end
-    it "when 'http://myhost.com' should be valid" do
-      feed.url = 'http://myhost.com'
-      feed.should be_valid
-    end
-    it "when 'http://www.myhost.com' should be valid" do
-      feed.url = 'http://www.myhost.com'
-      feed.should be_valid
-    end
-  end
-
-  context "featured level" do
-    before do
-      Feed.create(
-                url: 'http://somenews.com/1',
-                selector: '#news',
-                url_pattern: 'a',
-                title: '.title',
-                subtitle: '.subtitle',
-                image_source: 'img',
-                host: 'http://somenews.com/1',
-                featured_level: 0,
-                limit: 5)
-      Feed.create(
-                url: 'http://somenews.com/2',
-                selector: '#news',
-                url_pattern: 'a',
-                title: '.title',
-                subtitle: '.subtitle',
-                image_source: 'img',
-                host: 'http://somenews.com/2',
-                featured_level: 1,
-                limit: 5)
-      Feed.create(
-                url: 'http://somenews.com/3',
-                selector: '#news',
-                url_pattern: 'a',
-                title: '.title',
-                subtitle: '.subtitle',
-                image_source: 'img',
-                host: 'http://somenews.com/3',
-                featured_level: 2,
-                limit: 5)
-    end
-
-    it "should find all feeds by featured level" do
-      feeds = Feed.all(featured_level: 1)
-      feeds[0].url.should == 'http://somenews.com/2'
+  describe ".all" do
+    before { 3.times {Factory(:feed)} }
+    context "when search by some featured level" do
+      let(:feeds) {feeds = Feed.all(featured_level: 2)}
+      it {feeds[0].url.should == 'http://somenews.com/2'}
     end
   end
 

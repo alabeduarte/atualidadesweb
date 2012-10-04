@@ -12,7 +12,7 @@ class Feed
   key :featured_level, Integer
   key :limit, Integer
 
-  validates :selector, :url_pattern, :title, :presence => true
+  validates :selector, :url_pattern, :presence => true
   validates :url, :host, :format => URI::regexp(%w(http https)), :presence => true
   validates :featured_level, :limit, :numericality => true, :presence => true
 

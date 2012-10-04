@@ -1,10 +1,11 @@
 FactoryGirl.define do
   factory :feed do
-    sequence(:host) {|n| "http://#{n}host.com" }
+    sequence(:url) {|n| "http://somenews.com/#{n}" }
+    sequence(:host) {|n| "http://somenews.com/#{n}" }
+    sequence(:featured_level) {|n| n}
     selector '#news'
     url_pattern 'a'
     title '.title'
-    subtitle '.subtitle'
-    image_source 'img'
+    limit 5
   end
 end
