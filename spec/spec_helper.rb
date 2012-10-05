@@ -13,7 +13,6 @@ Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
 RSpec.configure do |config|
   config.color_enabled = true
 
-
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
@@ -30,19 +29,11 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   #config.use_transactional_fixtures = true
-  config.formatter = :documentation # :progress, :html, :textmate
+  # config.formatter = :documentation # :progress, :html, :textmate
 
-  config.before(:suite) do
-    DatabaseCleaner[:mongo_mapper].strategy = :truncation
-  end
-
-  config.before(:each) do
-    DatabaseCleaner[:mongo_mapper].start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner[:mongo_mapper].clean
-  end
+  config.before(:suite) { DatabaseCleaner[:mongo_mapper].strategy = :truncation }
+  config.before(:each) { DatabaseCleaner[:mongo_mapper].start }
+  config.after(:each) { DatabaseCleaner[:mongo_mapper].clean }
 
   config.include FactoryGirl::Syntax::Methods
 
