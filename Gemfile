@@ -35,6 +35,9 @@ group :development, :test do
     gem "rspec-rails", "~> 2.5.0"
     gem "webrat", "~> 0.7.3"
     gem 'database_cleaner'
+    gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+    gem 'guard-rspec'
+    gem 'guard-livereload'
 end
 
 group :test do

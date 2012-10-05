@@ -9,6 +9,39 @@
 
 # => featured feeds
 Feed.create(
+            favicon: "http://veja.abril.com.br/favicon.ico",
+            selector: ".editorial ul li",
+            featured_level: 0,
+            limit: 20,
+            url: "http://veja.abril.com.br/",
+            host: "http://veja.abril.com.br/",
+            url_pattern: "a",
+            title: ".chapeu",
+            subtitle: ".chamada-titulo",
+            image_source: "img")
+Feed.create(
+            selector: "#destaqueReportagemScroll .destaqueReportagemMateria",
+            featured_level: 1,
+            limit: 10,
+            url: "http://www.istoe.com.br",
+            host: "http://www.istoe.com.br",
+            url_pattern: "a",
+            title: "span",
+            subtitle: "a",
+            image_source: "img")
+
+Feed.create(
+            favicon: "http://revistaepoca.globo.com/media/main/img/favicon.ico",
+            selector: ".widgets-ultimas-por-editoria .chamada-comfoto, .widgets-ultimas-por-editoria ul li",
+            featured_level: 1,
+            limit: 20,
+            url: "http://revistaepoca.globo.com",
+            host: "http://revistaepoca.globo.com",
+            url_pattern: "a",
+            title: "a",
+            image_source: "img")
+
+Feed.create(
               url: 'http://www.globo.com/',
               favicon: 'http://s.glbimg.com/en/ho/static/globocom/img/favicon.png',
               host: 'http://www.globo.com/',
@@ -74,7 +107,7 @@ Feed.create(
               subtitle: 'p',
               image_source: 'h1 a img',
               featured_level: 0,
-              limit: 6)
+              limit: 10)
 Feed.create(
               url: 'http://www1.folha.uol.com.br/emcimadahora/',
               favicon: 'http://f.i.uol.com.br/favicon.ico',
@@ -84,7 +117,7 @@ Feed.create(
               title: '.nlSection',
               subtitle: '.nlArticle a',
               featured_level: 1,
-              limit: 8)
+              limit: 15)
 Feed.create(
               url: 'http://noticias.terra.com.br/ultimasnoticias/0,,EI188,00.html',
               favicon: 'http://s1.trrsf.com.br/favicon.ico',
@@ -95,17 +128,17 @@ Feed.create(
               subtitle: '',
               image_source: '',
               featured_level: 1,
-              limit: 8)
+              limit: 15)
 Feed.create(
               url: 'http://www.bbc.co.uk/portuguese/',
               favicon: 'http://www.bbc.co.uk/favicon.ico',
               host: 'http://www.bbc.co.uk/',
-              selector: '.content ul li',
+              selector: '.teaser',
               url_pattern: 'a',
               title: 'a',
               image_source: 'img',
               featured_level: 0,
-              limit: 15)
+              limit: 8)
 Feed.create(
               url: 'http://www.band.com.br/',
               host: 'http://www.band.com.br/',
