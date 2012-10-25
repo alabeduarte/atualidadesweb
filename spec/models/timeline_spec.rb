@@ -35,14 +35,6 @@ describe Timeline do
         it { subject.featured_news.each { |n| n.featured_level.should be 0 } }
       end
     end
-    describe "#plain_news" do
-      context "when fetching plain news" do
-        it { subject.should have(2).plain_news }
-      end
-      context "when fetching featured news" do
-        it { subject.plain_news.each { |n| n.featured_level.should be 1 } }
-      end
-    end
   end
 
 end

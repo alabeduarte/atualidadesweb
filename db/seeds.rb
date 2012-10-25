@@ -21,7 +21,7 @@ Feed.create(
             image_source: "img")
 Feed.create(
             selector: "#destaqueReportagemScroll .destaqueReportagemMateria",
-            featured_level: 1,
+            featured_level: 0,
             limit: 10,
             url: "http://www.istoe.com.br",
             host: "http://www.istoe.com.br",
@@ -33,7 +33,7 @@ Feed.create(
 Feed.create(
             favicon: "http://revistaepoca.globo.com/media/main/img/favicon.ico",
             selector: ".widgets-ultimas-por-editoria .chamada-comfoto, .widgets-ultimas-por-editoria ul li",
-            featured_level: 1,
+            featured_level: 0,
             limit: 20,
             url: "http://revistaepoca.globo.com",
             host: "http://revistaepoca.globo.com",
@@ -71,7 +71,7 @@ Feed.create(
               title: 'a strong',
               subtitle: 'a',
               image_source: 'a img',
-              featured_level: 1,
+              featured_level: 0,
               limit: 3)
 
 # => plain feeds
@@ -84,7 +84,7 @@ Feed.create(
               title: '.chapeu',
               subtitle: 'a',
               image_source: '.foto a img',
-              featured_level: 1,
+              featured_level: 0,
               limit: 5)
 Feed.create(
               url: 'http://g1.globo.com',
@@ -95,7 +95,7 @@ Feed.create(
               title: '.chapeu',
               subtitle: '.titulo',
               image_source: 'a.borda-interna img',
-              featured_level: 1,
+              featured_level: 0,
               limit: 6)
 Feed.create(
               url: 'http://noticias.uol.com.br/noticias/',
@@ -116,7 +116,7 @@ Feed.create(
               url_pattern: '.nlArticle a',
               title: '.nlSection',
               subtitle: '.nlArticle a',
-              featured_level: 1,
+              featured_level: 0,
               limit: 15)
 Feed.create(
               url: 'http://noticias.terra.com.br/ultimasnoticias/0,,EI188,00.html',
@@ -127,7 +127,7 @@ Feed.create(
               title: 'strong',
               subtitle: '',
               image_source: '',
-              featured_level: 1,
+              featured_level: 0,
               limit: 15)
 Feed.create(
               url: 'http://www.bbc.co.uk/portuguese/',
@@ -146,5 +146,5 @@ Feed.create(
               url_pattern: 'a',
               title: 'a',
               image_source: 'img',
-              featured_level: 1,
+              featured_level: 0,
               limit: 15)

@@ -54,8 +54,6 @@
   font-size: 12px;
   color: #555;
   float: left;
-  height: 550px;
-  overflow: auto;
 /*  border: 1px solid green;*/
 }
 
@@ -69,7 +67,7 @@
 
 .news.left {
   font-size: 14px;
-  width: 39%;
+  width: 100%;
 }
 
 .news.center {
@@ -108,6 +106,8 @@ ul.news li {
 
 .featured-img-border {
   padding: 10px;
+  float: left;
+  width: 220px;
 }
 
 .featured-description {
@@ -115,12 +115,13 @@ ul.news li {
   font-size: 12px;
 }
 
-.featured:hover, .featured-description:hover, .featured-title:hover {
-  color: #333;
+.content-text-img {
+  width: 70%;
+  float: left;
 }
 
-ul.news.center li {
-  /*height: 112px;*/
+.featured:hover, .featured-description:hover, .featured-title:hover {
+  color: #333;
 }
 
 .news-center-img-border {
@@ -139,19 +140,18 @@ ul.news.center li {
   padding-left: 18px;
   padding-right: 18px;
   padding-bottom: 18px;
-  /*text-overflow:ellipsis;
-    white-space:nowrap;
-    overflow:hidden;*/
 }
 
 .featured img {
   -webkit-border-radius: 4px;
      -moz-border-radius: 4px;
           border-radius: 4px;
-  min-width: 250px;
-  max-width: 300px;
+
+  min-width: 100px;
+  max-width: 200px;
   max-height: 300px;
   margin: 9px;
+  float: right;
 }
 
 ul.news.center img {
@@ -179,9 +179,6 @@ ul.news.images img {
   padding-left: 18px;
   padding-right: 18px;
   padding-bottom: 18px;
-  /*text-overflow:ellipsis;
-    white-space:nowrap;
-    overflow:hidden;*/
 }
 
 .title-area {
