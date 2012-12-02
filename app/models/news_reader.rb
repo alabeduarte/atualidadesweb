@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
-class WebReader
+class NewsReader
 
   attr_reader :title, :selector, :url
 

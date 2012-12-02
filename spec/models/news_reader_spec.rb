@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe WebReader do
+describe NewsReader do
   let(:selector) { Nokogiri::HTML }
   let(:globo_feed) { Factory(:globo_feed) }
   let(:g1_feed) { Factory(:g1_feed) }
@@ -79,7 +79,7 @@ private
   end
 
   def build_reader_with(feed, html)
-    WebReader.new(feed, parse(html))
+    NewsReader.new(feed, parse(html))
   end
   def parse(path)
     selector.parse(File.read(path))
