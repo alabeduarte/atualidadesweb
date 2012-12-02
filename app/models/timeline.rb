@@ -6,11 +6,11 @@ class Timeline
   end
 
   def featured_news
-    @featured_news ||= @news_updater.update_by('featured', featured_feeds)
+    @featured_news ||= @news_updater.update_by('featured', all_feeds)
   end
 
 private
-  def featured_feeds
-    @featured_feeds ||= @repository.all(featured_level: 0)
+  def all_feeds
+    @all_feeds ||= @repository.all(featured_level: 0)
   end
 end
