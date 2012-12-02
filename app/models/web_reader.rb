@@ -1,6 +1,6 @@
 require 'nokogiri'
 require 'open-uri'
-class Reader
+class WebReader
 
   attr_reader :title, :selector, :url
 

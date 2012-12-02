@@ -21,7 +21,7 @@ describe Admin::FeedsController do
 
   describe "GET show" do
     it "assigns the requested feed as @feed" do
-      Reader.stub(:new).with(anything) { mock(:reader) }
+      WebReader.stub(:new).with(anything) { mock(:reader) }
       Feed.stub(:find).with("37") { mock_feed }
       get :show, :id => "37"
       assigns(:feed).should be(mock_feed)

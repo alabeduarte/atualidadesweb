@@ -1,6 +1,6 @@
 class Timeline
 
-  def initialize(repository, news_updater=NewsUpdater.new)
+  def initialize(repository, news_updater)
     @repository = repository
     @news_updater = news_updater
   end
