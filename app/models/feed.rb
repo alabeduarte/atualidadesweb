@@ -16,8 +16,4 @@ class Feed
   validates :url, :host, :format => URI::regexp(%w(http https)), :presence => true
   validates :featured_level, :limit, :numericality => true, :presence => true
 
-  def news(reader=NewsCrawler.new(self))
-    reader.news
-  end
-
 end

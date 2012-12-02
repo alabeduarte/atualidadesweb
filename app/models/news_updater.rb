@@ -13,8 +13,8 @@ protected
   def fetch_news_by(feeds)
     news = []
     workers = []
-    feeds.each do |f|
-      workers << Thread.new { news.concat f.news }
+    feeds.each do |feed|
+      workers << Thread.new { news.concat NewsCrawler.new(feed).news }
     end
     workers.each(&:join)
     news = news.shuffle if !@sortable

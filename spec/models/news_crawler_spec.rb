@@ -75,7 +75,7 @@ describe NewsCrawler do
 
 private
   def fetch(reader, feed)
-    feed.news(reader)
+    reader.news
   end
 
   def build_reader_with(feed, html)
