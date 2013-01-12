@@ -29,7 +29,7 @@ RSpec.configure do |config|
   # examples within a transaction, remove the following line or assign false
   # instead of true.
   #config.use_transactional_fixtures = true
-  # config.formatter = :documentation # :progress, :html, :textmate
+  config.formatter = :documentation # :progress, :html, :textmate
 
   config.before(:suite) { DatabaseCleaner[:mongo_mapper].strategy = :truncation }
   config.before(:each) { DatabaseCleaner[:mongo_mapper].start }

@@ -1,6 +1,7 @@
 class PageCrawler
   def initialize(host, document)
-    @host, @document = host, document
+    @host = host
+    @document = document
   end
 
   def text(element)

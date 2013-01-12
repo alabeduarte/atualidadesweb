@@ -15,11 +15,8 @@ describe Timeline do
   describe "fetching news" do
     subject { Timeline.new(repository, NewsUpdater.new) }
     describe "#featured_news" do
-      context "when fetching plain news" do
-        it { subject.should have(2).featured_news }
-      end
       context "when fetching featured news" do
-        it { subject.featured_news.each { |n| n.featured_level.should be 0 } }
+        it { subject.should have(2).featured_news }
       end
     end
   end

@@ -2,10 +2,6 @@ require 'cache'
 require 'news_crawler'
 class NewsUpdater
 
-  def initialize(sortable=false)
-    @sortable = sortable
-  end
-
   def update_by(key, feeds)
     Cache.fetch(key: key) { fetch_news_by feeds }
   end
@@ -18,8 +14,7 @@ protected
       workers << Thread.new { news.concat NewsCrawler.new(feed).news }
     end
     workers.each(&:join)
-    news = news.shuffle if !@sortable
-    news
+    news.shuffle
   end
 
 end

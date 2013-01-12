@@ -19,17 +19,15 @@ describe NewsCrawler do
   end
 
   describe "validating 'http://www.globo.com' selector" do
-    let(:news) { fetch(globo_reader, globo_feed) }
-    context "fetching high quality images from 'http://www.globo.com" do
-      it { news[0].image.should == "http://s.glbimg.com/en/ho/f/original/2012/09/29/exobeso.jpg" }
+    it "should fetch high quality images" do
+      news = fetch(globo_reader, globo_feed)
+      news[0].image.should == "http://s.glbimg.com/en/ho/f/original/2012/09/29/exobeso.jpg"
     end
-    it { news[0].feed.url == "http://www.globo.com/" }
   end
 
   describe "validating 'http://g1.globo.com' selector" do
     let(:news) { fetch(g1_reader, g1_feed) }
     it { news.should_not be_empty }
-    it { news[0].featured_level.should be 0 }
     it { news[0].url.should == 'http://g1.globo.com/mundo/noticia/2012/08/ira-encerra-resgate-apos-terremotos-e-revisa-mortos-para-227-diz-tv-estatal.html' }
     it { news[0].subtitle.should == 'Tremores deixaram 1.380 pessoas feridas.' }
     it { news[0].feed.url == "http://g1.globo.com/" }
@@ -38,7 +36,6 @@ describe NewsCrawler do
   describe "validating 'http://noticias.uol.com.br/noticias' selector" do
     let(:news) { fetch(uol_reader, uol_feed) }
     it { news.should_not be_empty }
-    it { news[0].featured_level.should be 0 }
     it { news[0].url.should == 'http://esporte.uol.com.br/ultimas-noticias/reuters/2012/09/08/jackie-stewart-aconselha-hamilton-a-continuar-na-mclaren.htm' }
     it { news[0].title.should == 'Jackie Stewart aconselha Hamilton a continuar na McLaren' }
     it { news[0].subtitle.should == 'MONZA, 8 Set (Reuters) - Tricampeao de Formula 1, Jackie Stewart aconselhou Lewis Hamilton neste sabado a...' }
@@ -48,7 +45,6 @@ describe NewsCrawler do
   describe "validating 'http://noticias.uol.com.br/noticias' selector" do
     let(:news) { fetch(terra_reader, terra_feed) }
     it { news.should_not be_empty }
-    it { news[0].featured_level.should be 0 }
     it { news[0].url.should == 'http://noticias.terra.com.br/eleicoes/2012/rj/rio-de-janeiro/noticias/0,,OI6133651-EI20647,00-Maia+descarta+rejeicao+tenho+que+crescer+onde+tenho+chances.html' }
     it { news[0].title.should == 'Maia descarta rejeicao: "tenho que crescer onde tenho chances"' }
   end
@@ -56,7 +52,6 @@ describe NewsCrawler do
   describe "validating 'http://www1.folha.uol.com.br/emcimadahora/' selector" do
     let(:news) { fetch(folha_reader, folha_feed) }
     it { news.should_not be_empty }
-    it { news[0].featured_level.should be 0 }
     it { news[0].url.should == 'http://www1.folha.uol.com.br/mundo/1150652-al-qaeda-reivindica-131-ataques-no-iraque-durante-o-ramada.shtml' }
     it { news[0].title.should == 'Mundo' }
     it { news[0].subtitle.should == 'Al Qaeda reivindica 131 ataques no Iraque durante o Ramada' }

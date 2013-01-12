@@ -1,14 +1,11 @@
-# Feed.create(
-#               url: 'http://g1.globo.com',
-#               host: 'http://g1.globo.com',
-#               selector: '#glb-corpo .glb-area .chamada-principal',
-#               url_pattern: 'a',
-#               title: '.chapeu',
-#               subtitle: 'a',
-#               image_source: '.foto a img')
+def should_seed? model
+  empty = model.all.empty?
+  puts (empty ? "Seeding #{model}": "Not seeding #{model}. Already populated.")
+  empty
+end
 
-# => featured feeds
-Feed.create(
+if should_seed? Feed
+  Feed.create(
             favicon: "http://veja.abril.com.br/favicon.ico",
             selector: ".editorial ul li",
             featured_level: 0,
@@ -19,7 +16,7 @@ Feed.create(
             title: ".chapeu",
             subtitle: ".chamada-titulo",
             image_source: "img")
-Feed.create(
+  Feed.create(
             selector: "#destaqueReportagemScroll .destaqueReportagemMateria",
             featured_level: 0,
             limit: 10,
@@ -30,7 +27,7 @@ Feed.create(
             subtitle: "a",
             image_source: "img")
 
-Feed.create(
+  Feed.create(
             favicon: "http://revistaepoca.globo.com/media/main/img/favicon.ico",
             selector: ".widgets-ultimas-por-editoria .chamada-comfoto, .widgets-ultimas-por-editoria ul li",
             featured_level: 0,
@@ -41,7 +38,7 @@ Feed.create(
             title: "a",
             image_source: "img")
 
-Feed.create(
+  Feeed.create(
               url: 'http://www.globo.com/',
               favicon: 'http://s.glbimg.com/en/ho/static/globocom/img/favicon.png',
               host: 'http://www.globo.com/',
@@ -51,7 +48,7 @@ Feed.create(
               image_source: 'img',
               featured_level: 0,
               limit: 10)
-Feed.create(
+  Feed.create(
               url: 'http://g1.globo.com',
               favicon: 'http://s.glbimg.com/jo/g1/media/portal/img/logos/favicon.png',
               host: 'http://g1.globo.com',
@@ -62,7 +59,7 @@ Feed.create(
               image_source: '.foto a img',
               featured_level: 0,
               limit: 8)
-Feed.create(
+  Feed.create(
               url: 'http://www.uol.com.br/',
               favicon: 'http://home.img.uol.com.br/favicon.ico',
               host: 'http://www.uol.com.br/',
@@ -73,9 +70,7 @@ Feed.create(
               image_source: 'a img',
               featured_level: 0,
               limit: 3)
-
-# => plain feeds
-Feed.create(
+  Feed.create(
               url: 'http://g1.globo.com',
               favicon: 'http://s.glbimg.com/jo/g1/media/portal/img/logos/favicon.png',
               host: 'http://g1.globo.com',
@@ -86,7 +81,7 @@ Feed.create(
               image_source: '.foto a img',
               featured_level: 0,
               limit: 5)
-Feed.create(
+  Feed.create(
               url: 'http://g1.globo.com',
               favicon: 'http://s.glbimg.com/jo/g1/media/portal/img/logos/favicon.png',
               host: 'http://g1.globo.com',
@@ -97,7 +92,7 @@ Feed.create(
               image_source: 'a.borda-interna img',
               featured_level: 0,
               limit: 6)
-Feed.create(
+  Feed.create(
               url: 'http://noticias.uol.com.br/noticias/',
               favicon: 'http://home.img.uol.com.br/favicon.ico',
               host: 'http://uol.com.br/',
@@ -108,7 +103,7 @@ Feed.create(
               image_source: 'h1 a img',
               featured_level: 0,
               limit: 10)
-Feed.create(
+  Feed.create(
               url: 'http://www1.folha.uol.com.br/emcimadahora/',
               favicon: 'http://f.i.uol.com.br/favicon.ico',
               host: 'http://www1.folha.uol.com.br/',
@@ -118,7 +113,7 @@ Feed.create(
               subtitle: '.nlArticle a',
               featured_level: 0,
               limit: 15)
-Feed.create(
+  Feed.create(
               url: 'http://noticias.terra.com.br/ultimasnoticias/0,,EI188,00.html',
               favicon: 'http://s1.trrsf.com.br/favicon.ico',
               host: 'http://terra.com.br/',
@@ -129,7 +124,7 @@ Feed.create(
               image_source: '',
               featured_level: 0,
               limit: 15)
-Feed.create(
+  Feed.create(
               url: 'http://www.bbc.co.uk/portuguese/',
               favicon: 'http://www.bbc.co.uk/favicon.ico',
               host: 'http://www.bbc.co.uk/',
@@ -139,7 +134,7 @@ Feed.create(
               image_source: 'img',
               featured_level: 0,
               limit: 8)
-Feed.create(
+  Feed.create(
               url: 'http://www.band.com.br/',
               host: 'http://www.band.com.br/',
               selector: '.materia',
@@ -148,3 +143,4 @@ Feed.create(
               image_source: 'img',
               featured_level: 0,
               limit: 15)
+end
