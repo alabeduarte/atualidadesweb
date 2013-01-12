@@ -1,4 +1,5 @@
 require 'cache'
+require 'news_crawler'
 class NewsUpdater
 
   def initialize(sortable=false)
