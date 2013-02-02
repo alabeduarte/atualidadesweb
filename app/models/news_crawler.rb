@@ -11,10 +11,13 @@ class NewsCrawler
   end
 
   def news
-    news = []
+    news_fetched = []
     limit = @feed.limit
-    @selector.css(@feed.selector).first(limit).each {|item| news << build_news_by(item)}
-    news
+    @selector.css(@feed.selector).first(limit).each do |item|
+      news_fetched << build_news_by(item)
+    end
+
+    news_fetched
   end
 
 private
@@ -28,8 +31,7 @@ private
       img = page_crawler.image(@feed.image_source)
       href = page_crawler.link(@feed.url_pattern)
 
-      # creating news
-      News.new(feed: @feed, url: href, title: title, subtitle: subtitle, image: img, featured_level: level)
+      News.create(feed: @feed, url: href, title: title, subtitle: subtitle, image: img, featured_level: level)
     end
   end
 

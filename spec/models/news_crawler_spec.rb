@@ -18,6 +18,13 @@ describe NewsCrawler do
     Rails.cache.clear
   end
 
+  describe "when crawling news" do
+    it "should store all news fetched" do
+      News.should_receive(:create).with(anything).at_least :once
+      fetch globo_reader, globo_feed
+    end
+  end
+
   describe "validating 'http://www.globo.com' selector" do
     it "should fetch high quality images" do
       news = fetch(globo_reader, globo_feed)

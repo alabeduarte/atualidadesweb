@@ -18,11 +18,12 @@ end
 gem 'jquery-rails'
 
 group :development, :test do
-    gem "rspec-rails", "~> 2.5.0"
-    gem "webrat", "~> 0.7.3"
-    gem 'database_cleaner'
-    gem 'guard-rspec'
-    gem 'guard-livereload'
+  gem "rspec-rails", "~> 2.5.0"
+  gem "webrat", "~> 0.7.3"
+  gem 'database_cleaner'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'rb-fsevent', '~> 0.9.1'
 end
 
 group :test do
