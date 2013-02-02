@@ -67,7 +67,7 @@ FactoryGirl.define do
   end
 
   factory :news do
-    url "http://somenews.com"
+    sequence(:url) {|n| "http://somenews.com/#{n}" }
   end
 
 end

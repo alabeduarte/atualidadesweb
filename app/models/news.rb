@@ -10,7 +10,7 @@ class News
   key :featured_level, Integer
 
   def self.breaking_news
-    self.all(order: :id, limit: 50)
+    self.all(limit: 50, order: :id.desc)
   end
 
 end

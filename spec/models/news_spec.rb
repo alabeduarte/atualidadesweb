@@ -5,7 +5,13 @@ describe News do
   end
 
   context ".breaking_news" do
-    before { 100.times { create(:news) } }
-    it { News.breaking_news.size.should == 50 }
+    before { 99.times { create(:news) } }
+    it "should fetch the most recent news sorted by last id" do
+      breaking_news = News.breaking_news
+      breaking_news.size.should == 50
+      breaking_news[0].url.should == "http://somenews.com/100"
+      breaking_news[1].url.should == "http://somenews.com/99"
+      breaking_news[2].url.should == "http://somenews.com/98"
+    end
   end
 end
