@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe NewsCrawler do
   let(:selector) { Nokogiri::HTML }
-  let(:globo_feed) { Factory(:globo_feed) }
-  let(:g1_feed) { Factory(:g1_feed) }
-  let(:uol_feed) { Factory(:uol_feed) }
-  let(:terra_feed) { Factory(:terra_feed) }
-  let(:folha_feed) { Factory(:folha_feed) }
+  let(:globo_feed) { create(:globo_feed) }
+  let(:g1_feed) { create(:g1_feed) }
+  let(:uol_feed) { create(:uol_feed) }
+  let(:terra_feed) { create(:terra_feed) }
+  let(:folha_feed) { create(:folha_feed) }
 
   let(:globo_reader) { build_reader_with(globo_feed, 'spec/html/globo.html') }
   let(:g1_reader) { build_reader_with(g1_feed, 'spec/html/g1.html') }

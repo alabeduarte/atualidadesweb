@@ -139,10 +139,10 @@ describe Feed do
   end
 
   describe ".all" do
-    before { 3.times {Factory(:feed)} }
+    before { 3.times { create(:feed) } }
     context "when search by some featured level" do
-      let(:feeds) { feeds = Feed.all(featured_level: 2) }
-      it { feeds[0].url.should == 'http://somenews.com/2' }
+      let(:feeds) { feeds = Feed.all }
+      it { feeds.size.should == 3 }
     end
   end
 

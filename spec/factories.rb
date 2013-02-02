@@ -1,8 +1,9 @@
 FactoryGirl.define do
+
   factory :feed do
     sequence(:url) {|n| "http://somenews.com/#{n}" }
     sequence(:host) {|n| "http://somenews.com/#{n}" }
-    sequence(:featured_level) {|n| n}
+    featured_level 0
     selector "#news"
     url_pattern "a"
     title ".title"
@@ -63,6 +64,10 @@ FactoryGirl.define do
     title ".nlSection"
     subtitle ".nlArticle a"
     limit 3
+  end
+
+  factory :news do
+    url "http://somenews.com"
   end
 
 end

@@ -28,7 +28,7 @@ end
 
 group :test do
   gem 'simplecov', :require => false
-  gem 'factory_girl_rails', '~> 1.7.0'
+  gem 'factory_girl_rails', '~> 4.2.0'
   gem 'turn', '0.8.2', :require => false
 end
 

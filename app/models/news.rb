@@ -9,4 +9,8 @@ class News
   key :image, String
   key :featured_level, Integer
 
+  def self.breaking_news
+    self.all(order: :id, limit: 50)
+  end
+
 end
