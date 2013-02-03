@@ -10,7 +10,7 @@ class NewsCrawler
     @title = @selector.at_css("title").text
   end
 
-  def news
+  def fetch
     news_fetched = []
     limit = @feed.limit
     @selector.css(@feed.selector).first(limit).each do |item|

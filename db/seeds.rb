@@ -38,7 +38,7 @@ if should_seed? Feed
             title: "a",
             image_source: "img")
 
-  Feeed.create(
+  Feed.create(
               url: 'http://www.globo.com/',
               favicon: 'http://s.glbimg.com/en/ho/static/globocom/img/favicon.png',
               host: 'http://www.globo.com/',
@@ -143,4 +143,18 @@ if should_seed? Feed
               image_source: 'img',
               featured_level: 0,
               limit: 15)
+end
+
+if should_seed? News
+  require 'news_crawler'
+  workers = []
+  feeds = Feed.all
+  feeds.each do |feed|
+    workers << Thread.new do
+      p "fetching from: #{feed.url}"
+      NewsCrawler.new(feed).fetch
+    end
+  end
+  workers.each(&:join)
+  puts "Success!"
 end

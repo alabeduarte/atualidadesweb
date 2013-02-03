@@ -6,11 +6,8 @@ class Timeline
   end
 
   def featured_news
-    @featured_news ||= @news_updater.update_by('featured', all_feeds)
+    Thread.new { @news_updater.update_by('featured', @repository.all) }
+    @featured_news ||= Cache.fetch(key: 'breaking_news') { News.breaking_news }
   end
 
-private
-  def all_feeds
-    @all_feeds ||= @repository.all(featured_level: 0)
-  end
 end

@@ -1,23 +1,32 @@
 require 'spec_helper'
 
 describe Timeline do
-  let(:repository) { mock(:feed) }
-  let(:crawler) { mock(:crawler) }
 
-  before do
-    feed = Feed.new(url: 'http://test.com', featured_level: 0)
+  before(:each) { Rails.cache.clear }
 
+  let(:feed) { Feed.new(url: 'http://test.com') }
+  let(:updater) { mock(:news_updater) }
+  let(:repository) do
+    repository = mock(Feed)
     repository.stub(:all).and_return [feed]
-    NewsCrawler.stub(:new).with(anything).and_return(crawler)
-    crawler.stub(:news).and_return([News.new(featured_level: 0), News.new(featured_level: 0)])
+    repository
   end
 
-  describe "fetching news" do
-    subject { Timeline.new(repository, NewsUpdater.new) }
-    describe "#featured_news" do
-      context "when fetching featured news" do
-        it { subject.should have(2).featured_news }
+  subject { Timeline.new(repository, updater) }
+  context "when fetching featured news" do
+    context "breaking news from repository" do
+      it "should get news from cache first" do
+        Cache.should_receive(:fetch).with(key: 'breaking_news')
+        subject.featured_news
       end
+      it "should get news from repository then" do
+        News.should_receive(:breaking_news)
+        subject.featured_news
+      end
+    end
+    it "should update all feeds" do
+      updater.should_receive(:update_by).with('featured', repository.all)
+      subject.featured_news
     end
   end
 

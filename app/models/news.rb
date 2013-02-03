@@ -10,7 +10,8 @@ class News
   key :featured_level, Integer
 
   def self.breaking_news
-    self.all(limit: 50, order: :id.desc)
+    @breaking_news ||= self.all(limit: 130, order: :id.desc)
+    @breaking_news.shuffle
   end
 
 end

@@ -5,15 +5,13 @@ describe NewsUpdater do
 
   describe "#update_by" do
     let(:feed) { mock(:feed) }
-    let(:crawler) { mock(:crawler) }
-    before do
-      news = []
-      10.times {|n| news << mock(:news)}
-      NewsCrawler.stub(:new).with(anything).and_return(crawler)
-      crawler.stub(:news).and_return(news)
+    it "should verify cache before update" do
+      Cache.should_receive(:fetch).with(key: 'featured')
+      subject.update_by('featured', [feed, feed, feed])
     end
-    context "when fetch news from feed" do
-      it { subject.update_by('feed', [feed]).should have(10).items }
+    it "should call the crawler for each feed" do
+      NewsCrawler.should_receive(:new).with(feed).exactly(3).times
+      subject.update_by('featured', [feed, feed, feed])
     end
   end
 end
