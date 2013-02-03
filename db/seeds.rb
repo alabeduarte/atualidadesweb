@@ -144,17 +144,3 @@ if should_seed? Feed
               featured_level: 0,
               limit: 15)
 end
-
-if should_seed? News
-  require 'news_crawler'
-  workers = []
-  feeds = Feed.all
-  feeds.each do |feed|
-    workers << Thread.new do
-      p "fetching from: #{feed.url}"
-      NewsCrawler.new(feed).fetch
-    end
-  end
-  workers.each(&:join)
-  puts "Success!"
-end
