@@ -25,7 +25,7 @@ describe Timeline do
       end
     end
     it "should update all feeds" do
-      updater.should_receive(:update_by).with('featured', repository.all)
+      updater.should_receive(:update_by).with(repository.all)
       subject.featured_news
     end
   end
