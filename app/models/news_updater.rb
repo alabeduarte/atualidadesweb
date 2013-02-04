@@ -3,7 +3,7 @@ require 'news_crawler'
 class NewsUpdater
   def update_by(feeds)
     Cache.fetch(key: 'featured') do
-      News.destroy_old_news
+      Thread.new { News.destroy_old_news }
       feeds.each do |feed|
         Thread.new { NewsCrawler.new(feed).fetch }
       end
