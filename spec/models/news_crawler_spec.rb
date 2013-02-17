@@ -20,7 +20,7 @@ describe NewsCrawler do
 
   describe "when crawling news" do
     it "should store all news fetched" do
-      News.should_receive(:first_or_create).with(anything).at_least :once
+      News.should_receive(:build_with).with(anything).at_least :once
       globo_reader.fetch
     end
   end

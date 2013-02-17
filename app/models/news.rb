@@ -12,6 +12,10 @@ class News
   key :image, String
   key :featured_level, Integer
 
+  def self.build_with(options)
+    where(url: options[:url]).first_or_create(options)
+  end
+
   def self.breaking_news
     @breaking_news ||= self.all(limit: LIMIT, order: :created_at.desc)
     @breaking_news.shuffle
