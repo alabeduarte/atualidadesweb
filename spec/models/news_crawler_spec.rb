@@ -18,10 +18,17 @@ describe NewsCrawler do
     Rails.cache.clear
   end
 
-  describe "when crawling news" do
-    it "should store all news fetched" do
-      News.should_receive(:build_with).with(anything).at_least :once
-      globo_reader.fetch
+  describe "#fetch" do
+    context "when crawling news" do
+      it "should store all news fetched" do
+        News.should_receive(:build_with).with(anything).at_least :once
+        globo_reader.fetch
+      end
+    end
+    context "when news already in the 'bag'" do
+      let(:news) { mock_model(News).with(url: "http://somenews.com") }
+      before { News.stub(:build).with(anything).and_return(news) }
+      xit "should not add news already in the bag"
     end
   end
 
