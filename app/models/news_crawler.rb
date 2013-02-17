@@ -29,7 +29,7 @@ private
         url: page_crawler.link(@feed.url_pattern),
         featured_level: @feed.featured_level,
         title: page_crawler.titleize(@feed.title),
-        subtitle: page_crawler.text(@feed.subtitle),
+        subtitle: page_crawler.titleize(@feed.subtitle),
         image: page_crawler.image(@feed.image_source)
       }
 

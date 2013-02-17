@@ -157,7 +157,7 @@ ul.news.images img {
 
   .featured img {
     min-width: 100px;
-    max-width: 200px;
+    max-width: 150px;
     max-height: 300px;
     margin: 1%;
     float: left;
@@ -204,12 +204,11 @@ ul.news.images img {
   }
 
   .featured img {
-    min-width: 100px;
-    max-width: 110px;
+    min-width: 90px;
+    max-width: 90px;
     max-height: 300px;
     float: left;
-    margin: 10px;
-    margin-top: 40%;
+    margin: 40%;
   }
 
   .content-text-img {

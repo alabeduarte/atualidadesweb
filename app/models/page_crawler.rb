@@ -6,7 +6,8 @@ class PageCrawler
 
   def titleize(element)
     title = text(element)
-    title.classify if title
+    title[0] = title.first.capitalize[0] if title
+    title
   end
 
   def text(element)
