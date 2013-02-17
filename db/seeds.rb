@@ -128,19 +128,11 @@ if should_seed? Feed
               url: 'http://www.bbc.co.uk/portuguese/',
               favicon: 'http://www.bbc.co.uk/favicon.ico',
               host: 'http://www.bbc.co.uk/',
-              selector: '.teaser',
-              url_pattern: 'a',
-              title: 'a',
-              image_source: 'img',
-              featured_level: 0,
-              limit: 8)
-  Feed.create(
-              url: 'http://www.band.com.br/',
-              host: 'http://www.band.com.br/',
-              selector: '.materia',
+              selector: '.link.title',
               url_pattern: 'a',
               title: 'a',
               image_source: 'img',
               featured_level: 0,
               limit: 15)
+
 end

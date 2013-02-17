@@ -17,16 +17,18 @@ end
 
 gem 'jquery-rails'
 
-group :development, :test do
+group :test, :development do
+  gem 'pry'
+end
+
+group :test do
   gem "rspec-rails", "~> 2.5.0"
   gem "webrat", "~> 0.7.3"
   gem 'database_cleaner'
   gem 'guard-rspec'
   gem 'guard-livereload'
   gem 'rb-fsevent', '~> 0.9.1'
-end
-
-group :test do
+  gem 'shoulda-matchers', '~> 1.2'
   gem 'simplecov', :require => false
   gem 'factory_girl_rails', '~> 4.2.0'
   gem 'turn', '0.8.2', :require => false
