@@ -26,9 +26,14 @@ describe NewsCrawler do
       end
     end
     context "when news already in the 'bag'" do
-      let(:news) { mock_model(News).with(url: "http://somenews.com") }
-      before { News.stub(:build).with(anything).and_return(news) }
-      xit "should not add news already in the bag"
+      before do
+        News.stub(:build_with).with(anything).and_return(News.create(feed_id: globo_feed.id, url: "http://somenews.com"))
+      end
+      it "should not add news with some url" do
+        crawler = build_reader_with(globo_feed, 'spec/html/globo.html')
+        news = crawler.fetch
+        news.size.should == 1
+      end
     end
   end
 

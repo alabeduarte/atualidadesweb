@@ -24,6 +24,14 @@ describe News do
       News.should_receive(:first_or_create).with(options)
       News.build_with options
     end
+    context "when already news on repository" do
+      before { create(:news) }
+      it "should not create a new record" do
+        News.count.should == 1
+        news_built = News.build_with(url: News.first.url)
+        News.count.should == 1
+      end
+    end
   end
 
   context ".breaking_news" do

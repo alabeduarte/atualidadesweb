@@ -11,13 +11,13 @@ class NewsCrawler
   end
 
   def fetch
-    news_fetched = []
+    news_fetched = Set.new
     limit = @feed.limit
     @selector.css(@feed.selector).first(limit).each do |item|
       news_fetched << build_news_by(item)
     end
 
-    news_fetched
+    news_fetched.to_a
   end
 
 private
@@ -32,6 +32,7 @@ private
         subtitle: page_crawler.text(@feed.subtitle),
         image: page_crawler.image(@feed.image_source)
       }
+
       News.build_with options
     end
   end
