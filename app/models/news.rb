@@ -13,7 +13,7 @@ class News
   key :featured_level, Integer
 
   def self.build_with(options)
-    where(url: options[:url]).first_or_create(options)
+    where(url: options[:url]).first_or_create(options) if valid? options
   end
 
   def self.breaking_news
@@ -27,6 +27,11 @@ class News
       old_news = self.all(limit: News.count - LIMIT, order: :created_at.asc)
       old_news.each { |o| o.destroy }
     end
+  end
+
+  private
+  def self.valid?(options)
+    options[:title] || options[:subtitle]
   end
 
 end
