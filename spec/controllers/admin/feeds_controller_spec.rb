@@ -21,10 +21,16 @@ describe Admin::FeedsController do
 
   describe "GET show" do
     it "assigns the requested feed as @feed" do
-      NewsCrawler.stub(:new).with(anything) { mock(:reader) }
       Feed.stub(:find).with("37") { mock_feed }
+
+      news = [mock_model(News)]
+      crawler = mock(:news_crawler)
+      crawler.stub(:fetch) { news }
+      NewsCrawler.stub(:new).with(mock_feed) { crawler }
+
       get :show, :id => "37"
       assigns(:feed).should be(mock_feed)
+      assigns(:news).should == news
     end
   end
 

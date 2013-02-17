@@ -11,26 +11,29 @@ class NewsCrawler
   end
 
   def fetch
-    news_fetched = []
+    news_fetched = Set.new
     limit = @feed.limit
     @selector.css(@feed.selector).first(limit).each do |item|
       news_fetched << build_news_by(item)
     end
 
-    news_fetched
+    news_fetched.to_a
   end
 
 private
   def build_news_by(item)
     if (item)
-      level = @feed.featured_level
       page_crawler = PageCrawler.new(@feed.host, item)
-      title = page_crawler.text(@feed.title)
-      subtitle = page_crawler.text(@feed.subtitle)
-      img = page_crawler.image(@feed.image_source)
-      href = page_crawler.link(@feed.url_pattern)
+      options = {
+        feed_id: @feed.id,
+        url: page_crawler.link(@feed.url_pattern),
+        featured_level: @feed.featured_level,
+        title: page_crawler.text(@feed.title),
+        subtitle: page_crawler.text(@feed.subtitle),
+        image: page_crawler.image(@feed.image_source)
+      }
 
-      News.where(url: href).first_or_create(feed_id: @feed.id, url: href, title: title, subtitle: subtitle, image: img, featured_level: level)
+      News.build_with options
     end
   end
 

@@ -1,6 +1,8 @@
 class Feed
   include MongoMapper::Document
 
+  many :news
+
   key :url, String
   key :selector, String
   key :url_pattern, String

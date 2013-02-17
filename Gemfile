@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'mongo', '1.8.1'
 gem 'bson', '1.8.1'
 gem 'bson_ext', '1.8.1'
-gem "mongo_mapper", github: "jnunemaker/mongomapper" # pretty much same as you
+gem "mongo_mapper", github: "alabeduarte/mongomapper" # pretty much same as you
 gem 'nokogiri'
 gem 'thin'
 gem 'heroku'
@@ -17,19 +17,24 @@ end
 
 gem 'jquery-rails'
 
-group :development, :test do
-  gem "rspec-rails", "~> 2.5.0"
-  gem "webrat", "~> 0.7.3"
-  gem 'database_cleaner'
-  gem 'guard-rspec'
-  gem 'guard-livereload'
-  gem 'rb-fsevent', '~> 0.9.1'
+group :test, :development do
+  gem 'pry'
 end
 
 group :test do
-  gem 'simplecov', :require => false
+  gem "rspec", "~> 2.11.0"
+  gem "rspec-rails", "~> 2.11.0"
+  gem 'rspec-instafail'
+  gem 'shoulda-matchers', '~> 1.2'
+  gem 'database_cleaner'
   gem 'factory_girl_rails', '~> 4.2.0'
+  gem 'guard-rspec'
+  gem 'guard-livereload'
+  gem 'terminal-notifier-guard'
+  gem 'rb-fsevent', '~> 0.9.1'
+  gem 'simplecov', :require => false
   gem 'turn', '0.8.2', :require => false
+  gem "webrat", "~> 0.7.3"
 end
 
 group :production do
