@@ -1,16 +1,23 @@
 require 'spec_helper'
 describe News do
   context ".create" do
-    it { News.create(feed: create(:feed), url: "http://news.com", keywords: "news", title: "News", subtitle: "...", image: "http://imgae.news.com", featured_leve: 0).should be_true }
+    it { News.create(feed: create(:feed), url: "http://news.com", title: "News", subtitle: "...", image: "http://imgae.news.com", featured_leve: 0).should be_true }
   end
 
   describe ".build" do
     let(:feed) { create(:feed) }
     it "should looking for already news" do
-      url = "http://somenews.com"
-      News.stub(:where).with(url: url).and_return(News)
-      News.should_receive(:where).with(url: url)
-      News.build_with(url: url)
+      options = {
+        feed_id: feed.id,
+        url: "http://somenews.com",
+        title: "somenews",
+        subtitle: "news",
+        image: "img.png",
+        featured_leve: 0
+      }
+      News.stub(:where).with(options).and_return(News)
+      News.should_receive(:where).with(url: options[:url])
+      News.build_with options
     end
     it "should get first or create the news" do
       options = {
@@ -31,6 +38,13 @@ describe News do
         news_built = News.build_with(url: News.first.url)
         News.count.should == 1
       end
+    end
+    context "when news hasn't title or subtitle" do
+      let(:feed) { create(:feed) }
+      let(:options) do
+        { feed: feed.id, url: "http://somenews.com" }
+      end
+      it { News.build_with(options).should be_nil }
     end
   end
 

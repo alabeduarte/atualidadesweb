@@ -4,6 +4,11 @@ class PageCrawler
     @document = document
   end
 
+  def titleize(element)
+    title = text(element)
+    title.classify if title
+  end
+
   def text(element)
     if valid?(element)
       text = get(element).text

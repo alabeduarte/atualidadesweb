@@ -50,7 +50,11 @@ describe NewsCrawler do
     context "validating 'http://www.globo.com' selector" do
       it "should fetch high quality images" do
         news = globo_reader.fetch
-        news[0].image.should == "http://s.glbimg.com/en/ho/f/original/2012/09/29/exobeso.jpg"
+        news.first.image.should == "http://s.glbimg.com/en/ho/f/original/2012/09/29/exobeso.jpg"
+      end
+      it "should humanize the title field" do
+        news = globo_reader.fetch
+        news.first.title.should == "Fenomeno assustador"
       end
     end
   end
