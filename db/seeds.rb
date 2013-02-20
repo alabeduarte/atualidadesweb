@@ -117,7 +117,7 @@ if should_seed? Feed
               url: 'http://noticias.terra.com.br/ultimasnoticias/0,,EI188,00.html',
               favicon: 'http://s1.trrsf.com.br/favicon.ico',
               host: 'http://terra.com.br/',
-              selector: '.list .articles ol li a',
+              selector: '.articles li',
               url_pattern: 'a',
               title: 'strong',
               subtitle: '',
