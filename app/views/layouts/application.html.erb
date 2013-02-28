@@ -3,6 +3,11 @@
 <head>
   <title>Atualidades|Web</title>
   <meta name="viewport" content="height=device-height, width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta name="author" content="Atualidades|Web"/>
+  <meta name="description" content="As principais notícias do Brasil e do mundo estão por aqui!
+" />
+  <meta name="keywords" content="atualidades, web, noticias, news, breaking, brasil, brazil, mundo, world, economia, esporte, lazer, entretenimento, politica, cultura" />
   <%= stylesheet_link_tag 'application' %>
   <%= csrf_meta_tags %>
   <%= favicon_link_tag %>
@@ -16,23 +21,24 @@
           <nav class="navbar">
               <div class="navbar-inner">
                   <a class="brand" href="#">Atualidades | Web</a>
-                  <!--
                   <ul class="nav">
-                    <li class="active"><a href="#">Início</a></li>
+                    <li>
+                      <div id="fb-like" class="fb-like" data-href="http://atualidadesweb.com.br" data-send="true" data-width="550" data-show-faces="true" data-font="lucida grande" data-action="recommend"></div>
+                    </li>
+                    <!--li class="active"><a href="#">Início</a></li -->
                   </ul>
-                  -->
               </div>
           </nav>
           <div class="separator"></div>
           <%= yield %>
     </div>
     <footer></footer>
+    <div id="fb-root"></div>
     <script type="text/javascript">
         <%= yield :javascript %>
     </script>
-
-
     <script type="text/javascript">
+    // Google Analytics
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-38184587-1']);
       _gaq.push(['_trackPageview']);
@@ -41,6 +47,16 @@
         ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
+
+      // Facebook
+      (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/pt_BR/all.js#xfbml=1&appId=272370542894863";
+            fjs.parentNode.insertBefore(js, fjs);
+            d.getElementById('fb-like').style.marginTop = "10px";
+          }(document, 'script', 'facebook-jssdk'));
     </script>
   </body>
 </html>

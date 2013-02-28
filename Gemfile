@@ -1,9 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
-gem 'mongo', '1.8.1'
-gem 'bson', '1.8.1'
-gem 'bson_ext', '1.8.1'
+gem 'mongo', '1.8.2'
+gem 'bson', '1.8.2'
+gem 'bson_ext', '1.8.2'
 gem "mongo_mapper", github: "alabeduarte/mongomapper" # pretty much same as you
 gem 'nokogiri'
 gem 'thin'
