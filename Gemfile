@@ -7,7 +7,6 @@ gem 'bson_ext', '1.8.2'
 gem "mongo_mapper", github: "alabeduarte/mongomapper" # pretty much same as you
 gem 'nokogiri'
 gem 'thin'
-gem 'heroku'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

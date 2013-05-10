@@ -38,7 +38,6 @@ GEM
     activesupport (3.2.12)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    addressable (2.3.3)
     ansi (1.4.3)
     arel (3.0.2)
     bourne (1.1.2)
@@ -63,7 +62,6 @@ GEM
       http_parser.rb (~> 0.5.3)
     erubis (2.7.0)
     eventmachine (1.0.0)
-    excon (0.16.10)
     execjs (1.4.0)
       multi_json (~> 1.0)
     factory_girl (4.2.0)
@@ -84,14 +82,6 @@ GEM
     guard-rspec (2.4.1)
       guard (>= 1.1)
       rspec (~> 2.11)
-    heroku (2.35.0)
-      heroku-api (~> 0.3.7)
-      launchy (>= 0.3.2)
-      netrc (~> 0.7.7)
-      rest-client (~> 1.6.1)
-      rubyzip
-    heroku-api (0.3.8)
-      excon (~> 0.16.10)
     hike (1.2.1)
     http_parser.rb (0.5.3)
     i18n (0.6.4)
@@ -100,8 +90,6 @@ GEM
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.7)
-    launchy (2.2.0)
-      addressable (~> 2.3)
     listen (0.7.3)
     lumberjack (1.0.2)
     mail (2.4.4)
@@ -116,7 +104,6 @@ GEM
     mongo (1.8.2)
       bson (~> 1.8.2)
     multi_json (1.6.1)
-    netrc (0.7.7)
     nokogiri (1.5.6)
     plucky (0.6.2)
       mongo (~> 1.5)
@@ -151,8 +138,6 @@ GEM
     rb-fsevent (0.9.3)
     rdoc (3.12.2)
       json (~> 1.4)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
     rspec (2.11.0)
       rspec-core (~> 2.11.0)
       rspec-expectations (~> 2.11.0)
@@ -167,7 +152,6 @@ GEM
       activesupport (>= 3.0)
       railties (>= 3.0)
       rspec (~> 2.11.0)
-    rubyzip (0.9.9)
     sass (3.2.6)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
@@ -219,7 +203,6 @@ DEPENDENCIES
   factory_girl_rails (~> 4.2.0)
   guard-livereload
   guard-rspec
-  heroku
   jquery-rails
   mongo (= 1.8.2)
   mongo_mapper!
