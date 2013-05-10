@@ -7,11 +7,12 @@ describe TimelineController do
   describe "GET 'index'" do
     context "success" do
       before do
+        timeline.stub(:featured_news) { [] }
         Timeline.stub(:new) { timeline }
         get 'index'
       end
       it { response.should be_success }
-      it { assigns(:timeline).should == timeline }
+      it { assigns(:news).should == timeline.featured_news }
     end
   end
 end

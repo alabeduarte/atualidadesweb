@@ -1,5 +1,5 @@
 <ul id="featured_news" class="news left">
-  <% @timeline.featured_news.each do |n| %>
+  <% @news.each do |n| %>
     <li class="featured">
       <a target="_blank" href="<%= n.url %>">
         <% if n.image %>
