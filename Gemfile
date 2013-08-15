@@ -1,9 +1,10 @@
 source 'https://rubygems.org'
+ruby "2.0.0"
 
-gem 'rails', '3.2.12'
+gem 'rails', '3.2.14'
+gem 'jquery-rails'
 gem 'mongo', '1.8.2'
-gem 'bson', '1.8.2'
-gem 'bson_ext', '1.8.2'
+gem 'bson_ext' # For optimal performance, use of the BSON extension is recommended.
 gem "mongo_mapper", github: "alabeduarte/mongomapper" # pretty much same as you
 gem 'nokogiri'
 gem 'thin'
@@ -13,8 +14,6 @@ group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'jquery-rails'
 
 group :test, :development do
   gem 'pry'
