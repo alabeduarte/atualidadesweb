@@ -1,7 +1,0 @@
-==Atualidades|Web
-
-Install Mongodb and...
-  rake db:setup
-  rails server
-
-See: http://atualidadesweb.herokuapp.com/
