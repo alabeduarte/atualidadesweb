@@ -1,5 +1,6 @@
 require 'cache'
 require 'news_crawler'
+
 class NewsUpdater
   def update_by(feeds)
     Cache.fetch(key: 'featured') do
