@@ -1,12 +1,12 @@
+require 'newly'
 require 'cache'
-require 'news_crawler'
 
 class NewsUpdater
   def update_by(feeds)
     Cache.fetch(key: 'featured') do
       Thread.new { News.destroy_old_news }
       feeds.each do |feed|
-        Thread.new { NewsCrawler.new(feed).fetch }
+        Thread.new { Newlt::NewsCrawler.new(url: feed['url'], feed: feed).fetch }
       end
     end
   end
