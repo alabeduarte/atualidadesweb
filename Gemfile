@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 ruby "2.0.0"
 
 gem 'rails', '3.2.14'
+gem 'newly', '2.0.0'
 gem 'jquery-rails'
 gem 'mongo', '1.8.2'
 gem 'bson_ext' # For optimal performance, use of the BSON extension is recommended.
 gem "mongo_mapper", github: "alabeduarte/mongomapper" # pretty much same as you
-gem 'nokogiri'
 gem 'thin'
 
 group :assets do
@@ -33,8 +33,4 @@ group :test do
   gem 'simplecov', :require => false
   gem 'turn', '0.8.2', :require => false
   gem "webrat", "~> 0.7.3"
-end
-
-group :production do
-  gem 'thin'
 end

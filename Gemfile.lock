@@ -109,6 +109,8 @@ GEM
     mongo (1.8.2)
       bson (~> 1.8.2)
     multi_json (1.7.9)
+    newly (2.0.0)
+      nokogiri (~> 1.5)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
     plucky (0.6.6)
@@ -214,7 +216,7 @@ DEPENDENCIES
   jquery-rails
   mongo (= 1.8.2)
   mongo_mapper!
-  nokogiri
+  newly (= 2.0.0)
   pry
   rails (= 3.2.14)
   rb-fsevent (~> 0.9.1)
